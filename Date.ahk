@@ -26,7 +26,8 @@ class Date {
     static UTC_Date_Time => FormatTime(A_NowUTC " T0 R")
     static GetTimeZoneInfo() {
         struct := Buffer(C.TIME_ZONE_INFORMATION, 0)
-        result := DllCall("GetTimeZoneInformation", "Ptr", struct)
-        Date.Time_Zone_Offset := Abs(NumGet(result, "Short")) * 60
+        DllCall("GetTimeZoneInformation", "Ptr", struct)
+        Date.Time_Zone_Offset := Abs(NumGet(struct, "Short")) * 60
     }
 }
+; Date.GetTimeZoneInfo()

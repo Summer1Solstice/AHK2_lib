@@ -2,7 +2,10 @@
 
 # 包含脚本
 ### Date.ahk
-此脚本定义了 `Date` 类，封装了 UTC 历元、UTC 时间戳（秒和毫秒）、时区偏移量以及本地日期时间等日期时间相关属性，方便进行日期时间操作。（没有更多需求，所有没写完）
+此脚本定义了 `Date` 类，封装了 UTC 历元、UTC 时间戳（秒和毫秒）、时区偏移量以及本地日期时间等日期时间相关属性，方便进行日期时间操作。TODO
+
+### DebugOutput.ahk
+为原始值添加`Debug`方法，``OutputDebug(this "`n")``
 
 ### FormatLog.ahk
 生成包含时间、日志级别、脚本名、函数名和说明的格式化日志文本的 AutoHotkey 函数。
@@ -17,7 +20,7 @@
 将当前目录下的所有.ahk文件按照文件名排序，并生成一个新的README.md文件，包含每个脚本的标题和说明。
 
 ### Predefined.ahk
-为Windows的C++数据类型预定义字节长度（没写完）
+为Windows的C++数据类型预定义字节长度。TODO
 
 ### RegExGlobalMatch.ahk
 提供对字符串进行全局正则匹配的功能，返回包含所有匹配项（RegExMatchInfo 对象）的数组。

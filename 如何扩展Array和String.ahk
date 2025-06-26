@@ -1,7 +1,6 @@
 #Requires AutoHotkey v2.0
 ; 为原始值添加属性
-; 方法一 https://github.com/Descolada/AHK-v2-libraries and
-; (Object.Prototype.DefineProp)(Obj, PropertyName, PropertyDesc) 的写法来自 https://github.com/0w0Demonic/AquaHotkey/blob/main/src/Core/AquaHotkey.ahk
+; 方法一 https://github.com/0w0Demonic/AquaHotkey/blob/main/src/Core/AquaHotkey.ahk
 (Object.Prototype.DefineProp)(String.Prototype, "Repeat", { call: Repeat })
 Repeat(this, count) => StrReplace(Format("{:" count "}", ""), " ", this)
 OutputDebug "A".Repeat(3) "`n"
@@ -20,8 +19,8 @@ OutputDebug "0123456789".Length "`n"
 
 ; 方法三 https://github.com/Autumn-one/ahk-standard-lib/blob/main/string.ahk
 __DefProp := {}.DefineProp
-__DefProp("".Base, 'Trim', {Call: __StrTrim})
-__StrTrim(str, omitChars?){
+__DefProp("".Base, 'Trim', { Call: __StrTrim })
+__StrTrim(str, omitChars?) {
     return Trim(str, IsSet(omitChars) ? omitChars : unset)
 }
 OutputDebug "123   ".Trim() "`n"
