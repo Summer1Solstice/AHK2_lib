@@ -6,13 +6,13 @@
  * @todo 更多预定义字节长度的数据类型，在AutoHotkey提取这些数据类型对应的Type
  */
 class C {
-    static bool := 1
-    static char := 1
-    static int := 4
-    static float := 4
-    static double := 8
-    static wchar_t := 2
-    static short := 2
+    static bool := 1    ; 布尔值
+    static char := 1    ; 字符型
+    static int := 4     ; 整型
+    static float := 4   ; 单精度浮点型
+    static double := 8  ; 双精度浮点型
+    static wchar_t := 2 ; 宽字符型
+    static short := 2   ; 短整型
     /*****************************************************************************/
     ; type: UShort
     static WORD := C.short

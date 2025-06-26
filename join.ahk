@@ -17,3 +17,4 @@ join(arr, sep := " ") {
     }
     return RTrim(result, sep)
 }
+Array.Prototype.DefineProp("Join", { call: join })

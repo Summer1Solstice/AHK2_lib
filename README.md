@@ -34,6 +34,10 @@
 ### RunWait.ahk
 提供执行单条或多条命令并返回输出的 AutoHotkey 函数，基于 `WScript.Shell` 实现。
 
+### (String|Array|Map)Plus.ahk
+`#Include`其他(库|脚本)的聚合文件。
+被引入的文件通常自带对原生(对象|原始值)扩展的`DefineProp`语句。
+
 ### 如何扩展Array和String.ahk
 展示了为 `Array` 和 `String` 原型添加属性和方法的多种方式，方便对原生对象进行功能扩展。
 

@@ -17,14 +17,6 @@
  * @returns {String} 转换后的中文数字字符串
  */
 Num2HanZi(num, flag := 0) {
-    /*
-    功能：
-    参数：
-        n:
-        flag:
-    返回值：
-        转换后的中文数字字符串
-    */
     ; 定义数字映射表和数位列表
     if flag & 1 {      ; 大写
         figure_map := Map("0", "零", "1", "壹", "2", "贰", "3", "叁", "4", "肆", "5", "伍", "6", "陆", "7", "柒", "8", "捌", "9", "玖")
@@ -113,8 +105,8 @@ if A_ScriptName = "数字转汉字.ahk" {
     ; r := "1234567812345678.876543218765432"
     for f in [0, 1, 2, 3] {
         timelist := []
-        loop 100 {
-            loop_count := 100
+        loop_count := 100
+        loop loop_count {
             time1 := A_TickCount
             loop loop_count {
                 r := Random(1.0, 9999999999999999)

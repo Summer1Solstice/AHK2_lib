@@ -14,3 +14,4 @@ Repeat(text, count) {
     }
     return result
 }
+(Object.Prototype.DefineProp)(String.Prototype, "Repeat", { call: Repeat })
