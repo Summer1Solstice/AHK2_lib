@@ -1,5 +1,8 @@
 #Requires AutoHotkey v2.0
 
+DllCall("AllocConsole") ; 分配控制台窗口
+WinHide "ahk_id " DllCall("GetConsoleWindow", "ptr")    ; 隐藏控制台窗口
+
 /**
  * 执行单条命令并等待其完成，返回命令的标准输出。
  *

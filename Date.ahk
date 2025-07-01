@@ -25,9 +25,12 @@ class Date {
     static Local_Date_Time => FormatTime("T0 R")
     static UTC_Date_Time => FormatTime(A_NowUTC " T0 R")
     static GetTimeZoneInfo() {
-        struct := Buffer(C.TIME_ZONE_INFORMATION, 0)
-        DllCall("GetTimeZoneInformation", "Ptr", struct)
-        Date.Time_Zone_Offset := Abs(NumGet(struct, "Short")) * 60
+        TZI := Buffer(Struct.TIME_ZONE_INFORMATION.Size, 0)
+        DllCall("GetTimeZoneInformation", "Ptr", TZI)
+        Date.Time_Zone_Offset := Abs(NumGet(TZI, "Short") * 60)
     }
 }
-; Date.GetTimeZoneInfo()
+if A_ScriptName = "Date.ahk" {
+    Date.GetTimeZoneInfo()
+    OutputDebug Date.Time_Zone_Offset
+}
