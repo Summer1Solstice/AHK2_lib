@@ -1,6 +1,13 @@
 # AHK2_lib
 
 # 包含脚本
+### (String|Array|Map)Plus.ahk
+`#Include`其他(库|脚本)的聚合文件。
+被引入的文件通常自带对原生(对象|原始值)扩展的`DefineProp`语句。
+
+### ConnectWifi.ahk
+连接指定名称的 Wi-Fi 网络。
+
 ### Date.ahk
 此脚本定义了 `Date` 类，封装了 UTC 历元、UTC 时间戳（秒和毫秒）、时区偏移量以及本地日期时间等日期时间相关属性，方便进行日期时间操作。TODO
 
@@ -16,11 +23,18 @@
 ### join.ahk
 将数组元素连接为一个字符串，元素之间使用指定的分隔符。
 
+### LiteralStructure.ahk
+根据字符串给出结构的AHK字面量对象，不考虑内存对齐。
+
 ### organize .ahk
 将当前目录下的所有.ahk文件按照文件名排序，并生成一个新的README.md文件，包含每个脚本的标题和说明。
 
 ### Predefined.ahk
 为Windows的C++数据类型预定义字节长度。TODO
+
+### Range.ahk
+定义一个范围生成器函数，用于生成指定范围内的整数数组。
+用法同`Python`的`range()`，但是输出的是数组而不是迭代器。
 
 ### RegExGlobalMatch.ahk
 提供对字符串进行全局正则匹配的功能，返回包含所有匹配项（RegExMatchInfo 对象）的数组。
@@ -33,10 +47,6 @@
 
 ### RunWait.ahk
 提供执行单条或多条命令并返回输出的 AutoHotkey 函数，基于 `WScript.Shell` 实现。
-
-### (String|Array|Map)Plus.ahk
-`#Include`其他(库|脚本)的聚合文件。
-被引入的文件通常自带对原生(对象|原始值)扩展的`DefineProp`语句。
 
 ### 如何扩展Array和String.ahk
 展示了为 `Array` 和 `String` 原型添加属性和方法的多种方式，方便对原生对象进行功能扩展。

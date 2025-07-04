@@ -9,7 +9,7 @@
 #Requires AutoHotkey v2.0
 #Include Predefined.ahk
 
-Struct_text := "
+Struct_text := "  ; 在脚本中定义
 (
 typedef struct _TIME_ZONE_INFORMATION {
   LONG       Bias;
@@ -21,6 +21,9 @@ typedef struct _TIME_ZONE_INFORMATION {
   LONG       DaylightBias;
 } TIME_ZONE_INFORMATION, *PTIME_ZONE_INFORMATION, *LPTIME_ZONE_INFORMATION;
 )"
+if not Struct_text {    ; 从剪贴板获取
+    Struct_text := A_Clipboard
+}
 result := ""
 start := 0
 size := 0
@@ -47,4 +50,11 @@ loop parse Struct_text, "`n" {
     start += size
 }
 result .= "Size:" start "`n}"
-OutputDebug result
+if A_DebuggerName ?? "" = "Visual Studio Code" {
+    OutputDebug result
+} else {
+    ui := Gui()
+    ui.AddEdit("ReadOnly", result)
+    ui.AddButton("Default WP", "复制/Copy").OnEvent("Click", (*) => A_Clipboard := result)
+    ui.Show
+}

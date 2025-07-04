@@ -8,8 +8,12 @@ README := FileRead("README.md")
 new_readme := "# AHK2_lib`n`n# 包含脚本`n"
 for i in file_list {
     if i ~= "Plus" {
+        if skip ?? 0 {
+            continue
+        }
         RegExMatch(README, "#{2,}\s.*?Plus.*?\s*\n(.+\n)+", &match)
         new_readme .= match[0] "`n"
+        skip := 1
         continue
     }
     if RegExMatch(README, "i)#{2,}\s" i "\s*\n(.+\n)+", &match) {
