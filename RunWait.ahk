@@ -1,11 +1,15 @@
 #Requires AutoHotkey v2.0
 
 DllCall("AllocConsole") ; 分配控制台窗口
-WinHide "ahk_id " DllCall("GetConsoleWindow", "ptr")    ; 隐藏控制台窗口
+DllCall("SetConsoleCP", "uint", DllCall("GetConsoleCP"))    ; 设置控制台编码为当前系统编码。UTF-8：65001
+ConsoleWindowHandle := DllCall("GetConsoleWindow", "ptr")
+; 隐藏控制台窗口后最小化窗口，避免窗口影响WinActive检查活动窗口
+WinHide(ConsoleWindowHandle)
+WinMinimize(ConsoleWindowHandle)
 
 /**
  * 执行单条命令并等待其完成，返回命令的标准输出。
- *
+ * 
  * @param command 要执行的命令字符串
  * @returns {String} 命令的标准输出内容
  */
@@ -19,7 +23,7 @@ RunWaitOne(command) {
 
 /**
  * 在同一个命令行会话中执行多条命令，并返回所有命令的标准输出。
- *
+ * 
  * @param commands 多条命令字符串，各命令之间用换行符分隔
  * @returns {String} 所有命令的标准输出内容
  */
