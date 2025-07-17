@@ -20,8 +20,14 @@
 ### IniParser.ahk
 提供 `Parse` 和 `Stringify` 静态方法，用于解析 INI 字符串为 `Map` 对象，以及将 `Map` 对象转换为 INI 字符串。
 
+### IsBool.ahk
+判断一个值是否为布尔值。
+
 ### join.ahk
 将数组元素连接为一个字符串，元素之间使用指定的分隔符。
+
+### Len.ahk
+返回变量的长度，支持 Array、Map、RegExMatchInfo 和 Primitive 类型
 
 ### LiteralStructure.ahk
 根据字符串给出结构的AHK字面量对象，不考虑内存对齐。
@@ -33,7 +39,6 @@
 为Windows的C++数据类型预定义字节长度。TODO
 
 ### Range.ahk
-定义一个范围生成器函数，用于生成指定范围内的整数数组。
 用法同`Python`的`range()`，但是输出的是数组而不是迭代器。
 
 ### RegExGlobalMatch.ahk
@@ -56,7 +61,4 @@
 
 ### 星星评级.ahk
 输入整数，输出表示星级的字符串。
-
-### 正则搜索并替换.ahk
-对字符串进行批量正则搜索并替换的 AutoHotkey 函数。
 
