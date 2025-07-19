@@ -1,9 +1,14 @@
 #Requires AutoHotkey v2.0
 
 HowRun() {
+    /*
+    * Visual Studio Code
+    * SciTE4AutoHotkey
+    * ……
+    */
     global A_DebuggerName
-    if A_DebuggerName ?? "" = "Visual Studio Code" {
-        return "VSCode"
+    if IsSet(A_DebuggerName) {
+        return A_DebuggerName
     }
     try {
         FileOpen("*", "w")
