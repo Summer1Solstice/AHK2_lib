@@ -7,7 +7,7 @@ loop files "*.ahk" {
 README := FileRead("README.md")
 new_readme := "# AHK2_lib`n`n# 包含脚本`n"
 for i in file_list {
-    if i ~= "Plus" {
+    if i ~= "(String|Array|Map)Plus" {
         if skip ?? 0 {
             continue
         }

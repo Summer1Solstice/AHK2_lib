@@ -33,7 +33,7 @@ range(start, stop?, step := 1) {
     if not IsSet(stop)
         stop := start, start := 0
 
-    if IsNumber(start) or IsNumber(stop) or IsNumber(step)
+    if !IsNumber(start) or !IsNumber(stop) or !IsNumber(step)
         throw TypeError("参数必须为数字")
     if step = 0
         throw ValueError("步长不能为 0 ")

@@ -17,11 +17,14 @@
 ### FormatLog.ahk
 生成包含时间、日志级别、脚本名、函数名和说明的格式化日志文本的 AutoHotkey 函数。
 
+### HowRun.ahk
+通过标准输出、`A_DebuggerName`、`A_Args`、控制台附加等方式判断脚本如何运行。
+
 ### IniParser.ahk
 提供 `Parse` 和 `Stringify` 静态方法，用于解析 INI 字符串为 `Map` 对象，以及将 `Map` 对象转换为 INI 字符串。
 
-### IsBool.ahk
-判断一个值是否为布尔值。
+### IsPlus.ahk
+Is扩展，包含：`IsBool`、`IsPrime`函数。
 
 ### join.ahk
 将数组元素连接为一个字符串，元素之间使用指定的分隔符。
@@ -37,6 +40,9 @@
 
 ### Predefined.ahk
 为Windows的C++数据类型预定义字节长度。TODO
+
+### Prime.ahk
+生成质数
 
 ### Range.ahk
 用法同`Python`的`range()`，但是输出的是数组而不是迭代器。
