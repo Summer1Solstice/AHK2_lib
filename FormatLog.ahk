@@ -7,7 +7,7 @@
  * @param {String} Source 来源
  * @returns {String} 格式化后的日志
  */
-FormatLog(Explain, LogLevel := 1, Source := "") {
+FormatLog(Explain, LogLevel := 1, Source := A_ThisFunc) {
     static logLevelDict := ["DEBUG", "INFO", "WARN", "ERROR"]
     date := FormatTime(, "yyyy-MM-dd")
     time := FormatTime(, "HH:mm:ss")
