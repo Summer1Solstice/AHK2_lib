@@ -11,8 +11,8 @@
 ### Date.ahk
 此脚本定义了 `Date` 类，封装了 UTC 历元、UTC 时间戳（秒和毫秒）、时区偏移量以及本地日期时间等日期时间相关属性，方便进行日期时间操作。TODO
 
-### DebugOutput.ahk
-为原始值添加`Debug`方法，``OutputDebug(this "`n")``
+### Debug.ahk
+基于`OutputDebug`将变量字符串化输出到调试控制台。
 
 ### FormatLog.ahk
 生成包含时间、日志级别、脚本名、函数名和说明的格式化日志文本的 AutoHotkey 函数。
