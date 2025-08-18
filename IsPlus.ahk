@@ -21,31 +21,21 @@ IsPrime(val) {
     if val <= 1 {
         return false
     }
-    if val = 2 {
+    if val = 2 or val = 3 {
         return true
     }
     if not Mod(val, 2) {
         return false
     }
-    if val = 3 {
-        return true
-    }
-    if val > 5 and not Mod(val, 5) {
-        return false
-    }
-    min := 3
-    Divisor := min
-    max := Floor(Sqrt(val))
-    while true {
-        if not Mod(val, Divisor) {
+
+    max := Floor(Sqrt(val)) + 1
+    OutputDebug max "`n"
+    divisor := 3
+    while divisor <= max {
+        if not Mod(val, divisor) {
             return false
-        } else {
-            if Divisor < max {
-                Divisor += 2
-            } else if Divisor >= max {
-                break
-            }
         }
+        divisor += 2
     }
     return true
 }
