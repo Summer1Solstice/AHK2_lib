@@ -2,7 +2,7 @@
 #Include <XZ\Range>
 
 /**
- * 生成1-max之间的质数
+ * 生成2-max之间的质数
  * @param max 
  * @returns {Array} 
  */

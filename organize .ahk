@@ -16,7 +16,7 @@ loop files "*.ahk" {
         continue
     }
     if RegExMatch(README, "i)#{2,}\s" i "\s*\n(.+\n)+", &match) {
-        new_readme .= Format("### {1}`n{2}`n", i, match[1])
+        new_readme .= Format("{2}`n", i, match[0])
     } else {
         new_readme .= Format("### {1}`n`n`n", i)
     }

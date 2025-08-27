@@ -8,6 +8,9 @@
 ### ConnectWifi.ahk
 连接指定名称的 Wi-Fi 网络。
 
+### ConvertBase.ahk
+基于`msvcrt.dll`的进制转换，包含一个`ConvertBase`函数，可进行 2-32 进制转换，以及`hex`、`bin`、`oct`、`int`四个包装函数。
+
 ### Date.ahk
 此脚本定义了 `Date` 类，封装了 UTC 历元、UTC 时间戳（秒和毫秒）、时区偏移量以及本地日期时间等日期时间相关属性，方便进行日期时间操作。TODO
 
@@ -45,7 +48,8 @@ Is扩展，包含：`IsBool`、`IsPrime`函数。
 生成质数
 
 ### Range.ahk
-用法同`Python`的`range()`，但是输出的是数组而不是迭代器。
+用法同`Python`的`range()`，返回一个迭代器。
+另一版本`rangeA()`返回的是数组。
 
 ### RegExGlobalMatch.ahk
 提供对字符串进行全局正则匹配的功能，返回包含所有匹配项（RegExMatchInfo 对象）的数组。
@@ -58,6 +62,7 @@ Is扩展，包含：`IsBool`、`IsPrime`函数。
 
 ### RunWait.ahk
 提供执行单条或多条命令并返回输出的 AutoHotkey 函数，基于 `WScript.Shell` 实现。
+现在有隐藏控制台窗口的行为。
 
 ### 如何扩展Array和String.ahk
 展示了为 `Array` 和 `String` 原型添加属性和方法的多种方式，方便对原生对象进行功能扩展。

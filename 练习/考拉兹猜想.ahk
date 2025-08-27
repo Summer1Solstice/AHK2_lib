@@ -1,5 +1,5 @@
 #Requires AutoHotkey v2.0
-#Include 迭代.ahk
+#Include ..\Debug.ahk
 /*
 *练习：考拉兹猜想
 *对于任意正整数n，若n为偶数则除以2，若n为奇数则乘以3加1，重复此过程最终会得到1。
@@ -19,12 +19,13 @@ Collatz_Conjecture(n) {
     result := []
     result.Push(n)
     while n != 1 {
-        if Mod(n, 2) {
+        if n & 1 {
             n := n * 3 + 1
         } else {
             n := n // 2
         }
         result.Push(n)
     }
-    return JSON_stringify(result)
+    return stringify(result)
 }
+OutputDebug(Collatz_Conjecture(6))
