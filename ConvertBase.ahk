@@ -23,3 +23,12 @@ bin := (n) => ("0b" ConvertBase(10, 2, n))
 oct := (n) => ("0o" ConvertBase(10, 8, n))
 ; xx -> 10
 int := (Input, InputBase := 10) => (ConvertBase(InputBase, 10, Input))
+
+; 10 -> 2
+IntToBin := (i) => ((i >> 1 ? IntToBin(i >> 1) : "") i & 1)
+; 2 -> 10
+BinToInt := (n) => (StrLen(n) > 1 ? BinToInt(SubStr(n, 1, -1)) << 1 : 0) | SubStr(n, -1)
+; 10 -> 16
+IntToHex := (i) => (Format("{:#x}", i))
+; 16 -> 10
+HexToInt := (h) => (Format("{:d}", h))

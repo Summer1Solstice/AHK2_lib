@@ -1,15 +1,15 @@
 #Requires AutoHotkey v2.0
 
-HideConsoleWindow()
+; 隐藏控制台窗口
 HideConsoleWindow() {
     DllCall("AllocConsole") ; 分配控制台窗口
-    DllCall("SetConsoleCP", "uint", DllCall("GetConsoleCP"))    ; 设置控制台编码为当前系统编码。UTF-8：65001
+    ; DllCall("SetConsoleCP", "uint", DllCall("GetConsoleCP"))    ; 设置控制台编码为当前系统编码。UTF-8：65001
     ConsoleWindowHandle := DllCall("GetConsoleWindow", "ptr")   ; 获取控制台窗口句柄
-    ; 隐藏控制台窗口后最小化窗口，避免窗口影响WinActive检查活动窗口
+    ; 隐藏控制台窗口后最小化窗口，避免窗口影响WinActive检查活动窗口；？隐藏后窗口置底？
     WinHide(ConsoleWindowHandle)
     WinMinimize(ConsoleWindowHandle)
+    WinHide(ConsoleWindowHandle)
 }
-
 
 /**
  * 执行单条命令并等待其完成，返回命令的标准输出。
