@@ -19,16 +19,18 @@ DllCall("SetConsoleTitle", "Str", "AutoHotkey 终端")
 stdin := FileOpen("*", "r")
 ; 标准输出
 stdout := FileOpen("*", "w")
+; 标准错误
+stderr := FileOpen("**", "w")
 
 stdout.WriteLine("AutoHotkey " A_AhkVersion)
 while true {
     Print("PS " A_WorkingDir "> ")
-    input := RTrim(stdin.ReadLine(), "`n")
+    input := RTrim(stdin.ReadLine(), "`n")   ; 没有控制台输入时会阻塞在这一步
     input := StrSplit(input, " ")
     if not input.Length {
         continue
     }
-    Command := Trim(input.RemoveAt(1), "`n`r `t")   ; 没有控制台输出时会阻塞在这一步
+    Command := Trim(input.RemoveAt(1), "`n`r `t")
     if Command and Commands.HasOwnProp(Command) {
         if r := Commands.%Command%(input*) {
             PrintLine(r)
