@@ -14,7 +14,14 @@ if A_DebuggerName ?? 0 {
 
 DllCall("AllocConsole") ; 分配控制台窗口
 DllCall("SetConsoleTitle", "Str", "AutoHotkey 终端")
-
+HandlerRoutine(event) {
+    switch event {
+        case 0: ExitApp()
+        case 2: ExitApp()
+    }
+    return true
+}
+DllCall("SetConsoleCtrlHandler", "ptr", CallbackCreate(HandlerRoutine, "F"), "int", 1)
 ; 标准输入
 stdin := FileOpen("*", "r")
 ; 标准输出
