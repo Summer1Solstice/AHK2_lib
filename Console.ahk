@@ -24,7 +24,7 @@ class WindowsConsole {
     }
     ; DllCall("AttachConsole", "uint", -1)    ; 附加到父进程控制台
     ; 设置控制台标题
-    SetTitle := (Title) => (DllCall("SetConsoleTitle", "Str", Title))
+    SetTitle := (this, Title) => (DllCall("SetConsoleTitle", "Str", Title))
     ; 获取控制台标题
     GetTitle() {
         size := DllCall("GetConsoleTitle", "str", "") + 1
