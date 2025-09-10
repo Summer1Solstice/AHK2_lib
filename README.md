@@ -55,6 +55,9 @@ Is扩展，包含：`IsBool`、`IsPrime`函数。
 ### Prime.ahk
 生成质数
 
+### Radians_Degrees.ahk
+角度转弧度、弧度转角度
+
 ### Range.ahk
 用法同`Python`的`range()`，返回一个迭代器。
 另一版本`rangeA()`返回的是数组。
@@ -80,4 +83,7 @@ Is扩展，包含：`IsBool`、`IsPrime`函数。
 
 ### 星星评级.ahk
 输入整数，输出表示星级的字符串。
+
+### 鼠标序列动作.ahk
+通过解析文本实现鼠标序列动作。包括鼠标移动、鼠标点击。
 
