@@ -1,7 +1,7 @@
 /************************************************************************
  * @description 带gui的鼠标序列动作，实现了鼠标移动<mm>鼠标点击<mc>的实现
- * @date 2025/09/10
- * @version 0.0.5
+ * @date 2025/09/13
+ * @version 1.0.0
  ***********************************************************************/
 #Requires AutoHotkey v2.0
 FileEncoding("CP0")
@@ -52,44 +52,6 @@ ShowContextMenu(LV, Item, IsRightClick, X, Y)  ; 响应右键或 Apps 键.
     ; 这些应该被使用, 因为即使用户按了 Apps 键, 它们也能提供正确的坐标:
     ContextMenu.Show(X, Y)
 }
-; 方案被单击时切换下方编辑栏的内容
-LV.OnEvent("Click", ChangeTheEditingBar)
-ChangeTheEditingBar(LV, RowNumber) {
-    text := LV.GetText(RowNumber)
-    if text = "方案名" {
-        return
-    }
-    EditBar.Value := IniRead(ConfigFileName, text)
-    global NowEditPlan := text
-    ModifyNowEditTip(NowEditPlan)
-}
-; 方案切换
-QH.OnEvent("Click", SwitchPlan)
-SwitchPlan(*) {
-    plan := LV.GetText(LV.GetNext(0, "F"))
-    if plan = "config" {
-        MsgBox("你不能切换到 config")
-        return
-    }
-    if plan = "方案名" or plan = "状态" {
-        return
-    }
-    global NowPlan := LV.GetText(LV.GetNext(0, "F"))
-    IniWrite(NowPlan, ConfigFileName, "config", "NowPlan")
-    LVAddPlan()
-}
-; 修改方案后保存
-BC.OnEvent("Click", SavePlan)
-SavePlan(*) {
-    if NowEditPlan = "" {
-        MsgBox("请选择一个方案")
-        return
-    }
-    IniDelete(ConfigFileName, NowEditPlan)
-    IniWrite(EditBar.Value, ConfigFileName, NowEditPlan)
-    LVAddPlan()
-}
-
 ; 新建方案
 NewPlan(*) {
     if MsgBox("是否新建一个方案？", "提示", "okcancel") = "ok" {
@@ -139,6 +101,45 @@ RenamePlan(*) {
     IniDelete(ConfigFileName, plan)
     LVAddPlan()
 }
+
+; 方案被单击时切换下方编辑栏的内容
+LV.OnEvent("Click", ChangeTheEditingBar)
+ChangeTheEditingBar(LV, RowNumber) {
+    text := LV.GetText(RowNumber)
+    if text = "方案名" {
+        return
+    }
+    EditBar.Value := IniRead(ConfigFileName, text)
+    global NowEditPlan := text
+    ModifyNowEditTip(NowEditPlan)
+}
+; 方案切换
+QH.OnEvent("Click", SwitchPlan)
+SwitchPlan(*) {
+    plan := LV.GetText(LV.GetNext(0, "F"))
+    if plan = "config" {
+        MsgBox("你不能切换到 config")
+        return
+    }
+    if plan = "方案名" or plan = "状态" {
+        return
+    }
+    global NowPlan := LV.GetText(LV.GetNext(0, "F"))
+    IniWrite(NowPlan, ConfigFileName, "config", "NowPlan")
+    LVAddPlan()
+}
+; 修改方案后保存
+BC.OnEvent("Click", SavePlan)
+SavePlan(*) {
+    if NowEditPlan = "" {
+        MsgBox("请选择一个方案")
+        return
+    }
+    IniDelete(ConfigFileName, NowEditPlan)
+    IniWrite(EditBar.Value, ConfigFileName, NowEditPlan)
+    LVAddPlan()
+}
+
 ; 添加/刷新方案
 LVAddPlan() {
     VarInit()
