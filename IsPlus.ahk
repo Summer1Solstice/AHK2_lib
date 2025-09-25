@@ -6,7 +6,7 @@
  * @returns {Integer} 
  */
 IsBool(val) {
-    if val = 1 or val = 0 {
+    if val {
         return true
     }
     return false
