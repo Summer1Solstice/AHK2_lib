@@ -9,6 +9,10 @@ Commands：`cd`、`ls`
 `#Include`其他(库|脚本)的聚合文件。
 被引入的文件通常自带对原生(对象|原始值)扩展的`DefineProp`语句。
 
+### Bool.ahk
+`Integer`, `Float`, `String`, `Array`，基于AutoHotkey的原生`if`判断返回布尔值。
+`Array`, `Map`, `Object`，基于元素数量和属性数量`if`判断返回布尔值。
+
 ### ConnectWifi.ahk
 连接指定名称的 Wi-Fi 网络。
 
