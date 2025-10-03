@@ -1,5 +1,5 @@
 #Requires AutoHotkey v2.0
-#Include <XZ\DebugOutput>
+
 InstallKeybdHook
 ^o:: {
     HotIf((*) => true)

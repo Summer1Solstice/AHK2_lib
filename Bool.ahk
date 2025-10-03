@@ -6,13 +6,15 @@
  * @returns {Integer} 
  */
 Bool(var) {
-    switch Type(var) {
-        case "Integer": return var ? true : false
-        case "Float": return var ? true : false
-        case "String": return var ? true : false
-        case "Array": return var.Length ? true : false
-        case "Map": return var.Count ? true : false
-        case "Object": return ObjOwnPropCount(var) ? true : false
-        default: throw TypeError("Bool() expects a value of type Integer, Float, String, Array, Map, Object.", , "And you're sending in " Type(var))
+    if var is Primitive {
+        return var ? true : false
+    } else if var is Array {
+        return var.Length ? true : false
+    } else if var is Map {
+        return var.Count ? true : false
+    } else if var is Object {
+        return ObjOwnPropCount(var) ? true : false
+    } else {
+        throw TypeError("Bool() expects a value of type Integer, Float, String, Array, Map, Object.", , "And you're sending in " Type(var))
     }
 }
