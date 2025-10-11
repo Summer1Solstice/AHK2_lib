@@ -38,7 +38,7 @@ Commands：`cd`、`ls`
 提供 `Parse` 和 `Stringify` 静态方法，用于解析 INI 字符串为 `Map` 对象，以及将 `Map` 对象转换为 INI 字符串。
 
 ### IsPlus.ahk
-Is扩展，包含：`IsBool`、`IsPrime`函数。
+Is扩展，包含：`IsPrime`函数。
 
 ### join.ahk
 将数组元素连接为一个字符串，元素之间使用指定的分隔符。
@@ -77,6 +77,9 @@ Is扩展，包含：`IsBool`、`IsPrime`函数。
 ### RunWait.ahk
 提供执行单条或多条命令并返回输出的 AutoHotkey 函数，基于 `WScript.Shell` 实现。
 现在需要手动调用`HideConsoleWindow`来隐藏控制台窗口
+
+### Timeing.ahk
+简单的耗时统计模块，精度±10ms，输出秒或毫秒时间。
 
 ### 如何扩展Array和String.ahk
 展示了为 `Array` 和 `String` 原型添加属性和方法的多种方式，方便对原生对象进行功能扩展。
