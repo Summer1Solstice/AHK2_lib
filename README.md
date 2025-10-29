@@ -13,7 +13,7 @@ Commands：`cd`、`ls`
 原始值基于AutoHotkey的原生`if`判断返回布尔值，`Array`, `Map`, `Object`，基于元素数量和属性数量`if`判断返回布尔值。
 
 ### Brainfuck.ahk
-`Brainfuck`语言的解释器，无视`+-,.<>[]`之外的字符。
+`Brainfuck`语言的解释器，无视`+-,.<>[]`之外的字符。兼容`UTF-8`编码字符输出。
 
 ### ConnectWifi.ahk
 连接指定名称的 Wi-Fi 网络。
