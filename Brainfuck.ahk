@@ -1,10 +1,11 @@
 #Requires AutoHotkey v2.0
 
-Brainfuck(Code, MomorySize := 100) {
+Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
     ; 初始化变量
     CodeList := []  ; 创建代码列表
     CodePtr := 1    ; 代码指针
     MemoryPtr := 1  ; 内存指针
+    MemoryPtrRecord := 1
     output := []    ; 创建输出变量
     Bracket := []   ; 创建括号列表
     BracketMap := Map() ; 创建括号映射
@@ -40,12 +41,15 @@ Brainfuck(Code, MomorySize := 100) {
             case "<":
                 MemoryPtr -= 1
                 if MemoryPtr = 0 {
-                    throw IndexError("内存指针越界/Memory pointer out of bounds")
+                    throw IndexError("内存指针越界 < Memory pointer out of bounds")
                 }
             case ">":
                 MemoryPtr += 1
                 if MemoryPtr = MomorySize {
-                    throw IndexError("内存指针越界/Memory pointer out of bounds")
+                    throw IndexError("内存指针越界 > Memory pointer out of bounds")
+                }
+                if MemoryPtr > MemoryPtrRecord {
+                    MemoryPtrRecord := MemoryPtr
                 }
             case ",":
                 text := InputBox()
@@ -63,34 +67,44 @@ Brainfuck(Code, MomorySize := 100) {
         }
         CodePtr += 1
     }
-    buff := Buffer(output.Length, 0)
-    for i in output {
-        NumPut("uchar", i, buff, A_Index - 1)
+    if OutputMemoryCells {
+        OPtr := ""
+        OMemory := ""
+        loop MemoryPtrRecord {
+            if A_Index = MemoryPtr {
+                OPtr .= Format("{1:-5}", A_Index "^")
+                OMemory .= Format("{1:-5}", MemoryCells.Get(A_Index))
+            } else {
+                OPtr .= Format("{1:-5}", A_Index)
+                OMemory .= Format("{1:-5}", MemoryCells.Get(A_Index))
+            }
+        }
+        return OPtr "`n" OMemory
+    } else {
+        buff := Buffer(output.Length, 0)
+        for i in output {
+            NumPut("uchar", i, buff, A_Index - 1)
+        }
+        return StrGet(buff, "utf-8")
     }
-    return StrGet(buff, "utf-8")
 }
 
 if A_ScriptName = "Brainfuck.ahk" {
     text := "
-(
-+++++++++++[>++++++>+++++++++>++++++++>++++>+++>+<<<<<<-]>+++
-+++.>++.+++++++..+++.>>.>-.<<-.<.+++.------.--------.>>>+.>-.
-)"
-    text1 := "
     (
-228 185 146 乒 146 乓
-+++ +++ +++
-[>---<-]
-+++ ++++
-[>>----- -----<<-]
-+++++ +++++
-[>>>----- ----- -<<<-]
->-.
->-.
->.
-<<.
->.
->+.
-    )"
-    OutputDebug(Brainfuck(text))
+++++++++
+[
+    >++++
+    >++++++++++++
+    <<-
+]
+>>-
+[
+    <.
+    +
+    >-
+]
+++++++++++.
+)"
+    OutputDebug(Brainfuck(text, , false))
 }
