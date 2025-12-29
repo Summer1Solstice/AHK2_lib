@@ -34,6 +34,9 @@ Commands：`cd`、`ls`
 ### FormatLog.ahk
 生成包含时间、日志级别、脚本名、函数名和说明的格式化日志文本的 AutoHotkey 函数。
 
+### GetFileHash.ahk
+获取文件hash值
+
 ### HowRun.ahk
 通过标准输出、`A_DebuggerName`、`A_Args`、控制台附加等方式判断脚本如何运行。
 
