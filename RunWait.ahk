@@ -5,8 +5,8 @@ HideConsoleWindow() {
     DllCall("AllocConsole") ; 分配控制台窗口
     ; DllCall("SetConsoleCP", "uint", DllCall("GetConsoleCP"))    ; 设置控制台编码为当前系统编码。UTF-8：65001
     ConsoleWindowHandle := DllCall("GetConsoleWindow", "ptr")   ; 获取控制台窗口句柄
-    ; 隐藏控制台窗口后最小化窗口，避免窗口影响WinActive检查活动窗口；？隐藏后窗口置底？
-    WinHide(ConsoleWindowHandle)
+    ; 隐藏控制台窗口后最小化窗口，避免窗口影响WinActive检查活动窗口
+    WinMoveBottom(ConsoleWindowHandle)
     WinMinimize(ConsoleWindowHandle)
     WinHide(ConsoleWindowHandle)
 }
@@ -39,4 +39,8 @@ RunWaitMany(commands) {
     exec.StdIn.WriteLine(commands "`nexit")  ; 总是在最后退出!
     ; 读取并返回所有命令的输出
     return exec.StdOut.ReadAll()
+}
+if A_ScriptName = "RunWait.ahk" {
+    HideConsoleWindow()
+    OutputDebug WinGetTitle("A")
 }
