@@ -1,6 +1,13 @@
 #Requires AutoHotkey v2.0
 #Include <XZ\RunWait>
-/*哈希算法: MD2 MD4 MD5 SHA1 SHA256 SHA384 SHA512*/
+/**
+ * 计算文件的哈希值
+ * 使用系统CertUtil命令行工具计算指定文件的哈希值
+ * 
+ * @param file 要计算哈希值的文件路径
+ * @param HashAlgorithm 哈希算法类型，支持MD2 MD4 MD5 SHA1 SHA256 SHA384 SHA512
+ * @returns {String} 返回指定文件的哈希值字符串
+ */
 GetFileHash(file, HashAlgorithm) {
     command := Format('CertUtil -hashfile "{1}" {2}', file, HashAlgorithm)
     list := StrSplit(RunWaitOne(command), "`r`n")

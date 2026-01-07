@@ -1,5 +1,13 @@
 #Requires AutoHotkey v2.0
 
+/**
+ * Brainfuck解释器函数
+ * 
+ * @param Code {String} - Brainfuck源代码字符串，包含有效的Brainfuck命令
+ * @param MomorySize {Integer} - 内存大小，默认为100个单元格
+ * @param OutputMemoryCells {Boolean} - 是否输出内存单元格内容，默认为false，如果为true则返回内存状态而不是执行结果
+ * @returns {String} - 根据OutputMemoryCells参数决定返回执行结果字符串或内存状态字符串
+ */
 Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
     ; 初始化变量
     CodeList := []  ; 创建代码列表

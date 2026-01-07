@@ -35,7 +35,7 @@ rangeA(start, stop?, step := 1) {
 }
 
 /**
- * 左闭右开区间序列生成器
+ * Python风格的左闭右开区间序列生成器
  * @param {Integer} start 开始值
  * @param {Integer} stop 结束值
  * @param {Integer} step 步长
