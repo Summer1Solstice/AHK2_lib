@@ -6,7 +6,7 @@ HideConsoleWindow() {
     ; DllCall("SetConsoleCP", "uint", DllCall("GetConsoleCP"))    ; 设置控制台编码为当前系统编码。UTF-8：65001
     ConsoleWindowHandle := DllCall("GetConsoleWindow", "ptr")   ; 获取控制台窗口句柄
     ; 隐藏控制台窗口后最小化窗口，避免窗口影响WinActive检查活动窗口
-    WinMoveBottom(ConsoleWindowHandle)
+    WinHide(ConsoleWindowHandle)
     WinMinimize(ConsoleWindowHandle)
     WinHide(ConsoleWindowHandle)
 }
@@ -42,5 +42,4 @@ RunWaitMany(commands) {
 }
 if A_ScriptName = "RunWait.ahk" {
     HideConsoleWindow()
-    OutputDebug WinGetTitle("A")
 }
