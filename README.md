@@ -69,7 +69,7 @@ Is扩展，包含：`IsPrime`函数。
 
 ### Range.ahk
 用法同`Python`的`range()`，返回一个迭代器。
-另一版本`rangeA()`返回的是数组。
+另一版本`rangeA()`返回的是闭区间迭代器。
 
 ### RegExGlobalMatch.ahk
 提供对字符串进行全局正则匹配的功能，返回包含所有匹配项（RegExMatchInfo 对象）的数组。

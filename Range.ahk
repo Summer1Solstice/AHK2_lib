@@ -5,7 +5,7 @@
 #Requires AutoHotkey v2.0
 
 /**
- * AutoHotkey风格的序列生成器，包含开始值和结束值
+ * AutoHotkey的闭区间序列迭代器，包含开始值和结束值
  * @param {Integer} start 开始值
  * @param {Integer} stop 结束值
  * @param {Integer} step 步长
@@ -35,7 +35,7 @@ rangeA(start, stop?, step := 1) {
 }
 
 /**
- * Python风格的左闭右开区间序列生成器
+ * Python风格的左闭右开区间序列迭代器
  * @param {Integer} start 开始值
  * @param {Integer} stop 结束值
  * @param {Integer} step 步长
