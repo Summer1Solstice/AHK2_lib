@@ -1,5 +1,5 @@
 # AHK2_lib
-
+- [ ] 更新跟进自述文件和脚本的注释
 # 包含脚本
 ### AHK终端.ahk
 练习，基于[WindowsConsole](https://learn.microsoft.com/zh-cn/windows/console/)的模拟终端。
