@@ -44,7 +44,7 @@ Commands：`cd`、`ls`
 提供 `Parse` 和 `Stringify` 静态方法，用于解析 INI 字符串为 `Map` 对象，以及将 `Map` 对象转换为 INI 字符串。
 
 ### IsPlus.ahk
-Is扩展，包含：`IsPrime`函数。
+现在是空的。
 
 ### join.ahk
 将数组元素连接为一个字符串，元素之间使用指定的分隔符。
@@ -62,7 +62,7 @@ Is扩展，包含：`IsPrime`函数。
 为Windows的C++数据类型预定义字节长度。TODO
 
 ### Prime.ahk
-生成质数
+一个类，`EulerSieve`方法生成2-n之间的质数，`is`方法用试除法验证一个数是否为质数。
 
 ### Radians_Degrees.ahk
 角度转弧度、弧度转角度
@@ -87,9 +87,6 @@ Is扩展，包含：`IsPrime`函数。
 ### Timeing.ahk
 简单的耗时统计模块，精度±10ms，输出秒或毫秒时间。
 
-### 如何扩展Array和String.ahk
-展示了为 `Array` 和 `String` 原型添加属性和方法的多种方式，方便对原生对象进行功能扩展。
-
 ### 数字转汉字.ahk
 阿拉伯数字转中文大/小写汉字。
 
@@ -98,7 +95,4 @@ Is扩展，包含：`IsPrime`函数。
 
 ### 星星评级.ahk
 输入整数，输出表示星级的字符串。
-
-### 鼠标序列动作.ahk
-通过解析文本实现鼠标序列动作。包括鼠标移动`mm`、鼠标点击`mc`。
 
