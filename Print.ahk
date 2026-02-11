@@ -51,6 +51,6 @@ stringify(val) {
  * @param val 要输出的变量，可以是任意类型
  * @returns 无返回值，直接输出到调试窗口
  */
-Debug(val) {
+Print(val) {
     OutputDebug stringify(val) '`n'
 }

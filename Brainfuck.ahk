@@ -43,9 +43,9 @@ Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
     while CodePtr <= CodeList.Length {
         switch CodeList[CodePtr] {
             case "+":
-                MemoryCells[MemoryPtr] := MemoryCells.Get(MemoryPtr) + 1 & 255
+                MemoryCells[MemoryPtr] := MemoryCells[MemoryPtr] + 1 & 255
             case "-":
-                MemoryCells[MemoryPtr] := MemoryCells.Get(MemoryPtr) - 1 & 255
+                MemoryCells[MemoryPtr] := MemoryCells[MemoryPtr] - 1 & 255
             case "<":
                 MemoryPtr -= 1
                 if MemoryPtr = 0 {
@@ -63,13 +63,13 @@ Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
                 text := InputBox()
                 MemoryCells[MemoryPtr] := Ord(SubStr(text.Value, 1, 1))
             case ".":
-                output.Push(MemoryCells.Get(MemoryPtr))
+                output.Push(MemoryCells[MemoryPtr])
             case "[":
-                if not MemoryCells.Get(MemoryPtr) {
+                if not MemoryCells[MemoryPtr] {
                     CodePtr := BracketMap.Get(CodePtr) - 1
                 }
             case "]":
-                if MemoryCells.Get(MemoryPtr) {
+                if MemoryCells[MemoryPtr] {
                     CodePtr := BracketMap.Get(CodePtr) - 1
                 }
         }
@@ -81,10 +81,10 @@ Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
         loop MemoryPtrRecord {
             if A_Index = MemoryPtr {
                 OPtr .= Format("{1:-5}", A_Index "^")
-                OMemory .= Format("{1:-5}", MemoryCells.Get(A_Index))
+                OMemory .= Format("{1:-5}", MemoryCells[A_Index])
             } else {
                 OPtr .= Format("{1:-5}", A_Index)
-                OMemory .= Format("{1:-5}", MemoryCells.Get(A_Index))
+                OMemory .= Format("{1:-5}", MemoryCells[A_Index])
             }
         }
         return OPtr "`n" OMemory
