@@ -87,8 +87,16 @@ Commands：`cd`、`ls`
 提供执行单条或多条命令并返回输出的 AutoHotkey 函数，基于 `WScript.Shell` 实现。
 现在需要手动调用`HideConsoleWindow`来隐藏控制台窗口
 
-### Timeing.ahk
-简单的耗时统计模块，精度±10ms，输出秒或毫秒时间。
+### Timeit.ahk
+高精度的计时模块，传入一个函数，输出单次运行的平均耗时。
+如果函数需要传入参数,请使用
+```AutoHotkey
+fn := foo.Bind("args")  ; 函数
+fn1() => classobj.foo("arg")    ; 类实例方法
+```
+
+### 数字转汉字.ahk
+阿拉伯数字转中文大/小写汉字。
 
 ### 数字转汉字.ahk
 阿拉伯数字转中文大/小写汉字。
