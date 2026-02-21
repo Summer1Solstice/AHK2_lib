@@ -1,5 +1,5 @@
 #Requires AutoHotkey v2.0
-#Include RunWait.ahk
+#Include RunCmd.ahk
 
 /**
  * 连接Wi-Fi

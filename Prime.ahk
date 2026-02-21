@@ -1,5 +1,5 @@
 #Requires AutoHotkey v2.0
-#Include <XZ\Range>
+#Include Range.ahk
 
 class Prime {
     static EulerSieve(n) {

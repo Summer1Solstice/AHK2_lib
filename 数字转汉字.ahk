@@ -102,23 +102,12 @@ Num2HanZi(num, flag := 0) {
 }
 
 if A_ScriptName = "数字转汉字.ahk" {
-    ; r := "1234567812345678.876543218765432"
-    for f in [0, 1, 2, 3] {
-        timelist := []
-        loop_count := 100
-        loop loop_count {
-            time1 := A_TickCount
-            loop loop_count {
-                r := Random(1.0, 9999999999999999)
-                Num2HanZi(r, f)
-            }
-            time2 := A_TickCount
-            timelist.push((time2 - time1) / loop_count)
+    r := "1234567812345678.876543218765432"
+    #Include Timeit.ahk
+    for i in [0, 1, 2, 3] {
+        foo() {
+            Num2HanZi(r, i)
         }
-        sum := 0
-        for i in timelist {
-            sum += i
-        }
-        OutputDebug "flag:" f " 平均用时:" Round(sum / timelist.Length, 4) "ms`n"
+        Timeit(foo, 1000)
     }
 }

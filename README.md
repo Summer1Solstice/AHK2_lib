@@ -80,10 +80,7 @@ Commands：`cd`、`ls`
 ### Repeat.ahk
 重复指定文本指定次数，并返回最终结果字符串。
 
-### RunHidden.ahk
-运行指定的命令并隐藏窗口，借助 `WScript.Shell` 实现。
-
-### RunWait.ahk
+### RunCmd.ahk
 提供执行单条或多条命令并返回输出的 AutoHotkey 函数，基于 `WScript.Shell` 实现。
 现在需要手动调用`HideConsoleWindow`来隐藏控制台窗口
 
@@ -94,9 +91,6 @@ Commands：`cd`、`ls`
 fn := foo.Bind("args")  ; 函数
 fn1() => classobj.foo("arg")    ; 类实例方法
 ```
-
-### 数字转汉字.ahk
-阿拉伯数字转中文大/小写汉字。
 
 ### 数字转汉字.ahk
 阿拉伯数字转中文大/小写汉字。

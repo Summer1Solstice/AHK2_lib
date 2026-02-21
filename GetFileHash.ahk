@@ -1,5 +1,5 @@
 #Requires AutoHotkey v2.0
-#Include <XZ\RunWait>
+#Include RunCmd.ahk
 /**
  * 计算文件的哈希值
  * 使用系统CertUtil命令行工具计算指定文件的哈希值
