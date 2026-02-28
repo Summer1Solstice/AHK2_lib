@@ -3,13 +3,13 @@
  * @description 日期时间与时间戳
  * @date 2025/06/24
  ***********************************************************************/
-#Include Predefined.ahk
+
 ; 日期时间
 class Date {
     ; UTC历元
     static Epoch := "19700101000000"
     ; 时区偏移量(Seconds)
-    static Time_Zone_Offset := 28800
+    static TimeZoneOffset := 28800
 
     ; UTC时间戳(Seconds)
     static Unix_Timestamp => DateDiff(A_NowUTC, Date.Epoch, "Seconds")
@@ -31,9 +31,9 @@ class Date {
 
     ; 获取时区信息
     static GetTimeZoneInfo() {
-        TZI := Buffer(Struct.TIME_ZONE_INFORMATION.Size, 0)
+        TZI := Buffer(172, 0)
         DllCall("GetTimeZoneInformation", "Ptr", TZI)
-        return Date.Time_Zone_Offset := Abs(NumGet(TZI, "Short") * 60)
+        return Date.TimeZoneOffset := Abs(NumGet(TZI, "Short") * 60)
     }
 }
 if A_ScriptName = "Date.ahk" {

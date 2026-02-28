@@ -21,5 +21,10 @@ Timeit(fn, count := 1) {
     } else {
         diff := result[1]
     }
-    OutputDebug(Format("{1}: {2} ms`n", fn.Name ? fn.Name : "Fat arrow function", diff))
+    units := "ms"
+    switch {
+        case diff < 1: units := "µs", diff *= 1000
+        case diff > 1000: units := "s", diff /= 1000
+    }
+    OutputDebug(Format("{1}: {2} {3}`n", fn.Name ? fn.Name : "Fat arrow function", diff, units))
 }

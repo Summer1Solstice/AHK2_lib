@@ -174,29 +174,3 @@ class DTypes {  ; 数据来源：https://github.com/jNizM/AutoHotkey_MSDN_Types
     static WORD := { Type: "WORD", TypeA: "UShort", Size: 2 }
     static WPARAM := { Type: "WPARAM", TypeA: "UPtr", Size: 8 }
 }
-/** 为Windows的结构预定义成员起始位置和长度
- * @description 预定义结构
- */
-class Struct {
-    static SYSTEMTIME := {
-        wYear: { Start: 0, Size: 2, TypeA: "UShort" },
-        wMonth: { Start: 2, Size: 2, TypeA: "UShort" },
-        wDayOfWeek: { Start: 4, Size: 2, TypeA: "UShort" },
-        wDay: { Start: 6, Size: 2, TypeA: "UShort" },
-        wHour: { Start: 8, Size: 2, TypeA: "UShort" },
-        wMinute: { Start: 10, Size: 2, TypeA: "UShort" },
-        wSecond: { Start: 12, Size: 2, TypeA: "UShort" },
-        wMilliseconds: { Start: 14, Size: 2, TypeA: "UShort" },
-        Size: 16
-    }
-    static TIME_ZONE_INFORMATION := {
-        Bias: { Start: 0, Size: 4, TypeA: "Int" },
-        StandardName: { Start: 4, Size: 64, TypeA: "UShort" },
-        StandardDate: { Start: 68, Size: 16, TypeA: "Struct" },
-        StandardBias: { Start: 84, Size: 4, TypeA: "Int" },
-        DaylightName: { Start: 88, Size: 64, TypeA: "UShort" },
-        DaylightDate: { Start: 152, Size: 16, TypeA: "Struct" },
-        DaylightBias: { Start: 168, Size: 4, TypeA: "Int" },
-        Size: 172
-    }
-}
