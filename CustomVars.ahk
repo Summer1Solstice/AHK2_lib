@@ -8,8 +8,11 @@ C_LF := "`n"
 C_CRLF := "`r`n"
 ; Zero-width space
 C_ZeroWideSpace := Chr(0x200B)
-
-C_Seconds := 60000
-C_Minutes := 3600000
-C_Hours:= 216000000
-C_Days := 5184000000
+; 1s = 1000ms
+C_Seconds := 1000
+; 1m = 60s = 60000ms
+C_Minutes := 60 * C_Seconds
+; 1h = 60m = 3600000ms
+C_Hours := 60 * C_Minutes
+; 1d = 24h = 86400000ms
+C_Days := 24 * C_Hours
