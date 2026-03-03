@@ -8,8 +8,7 @@
  * @param OutputBase - 输出数字的进制基数，范围2-36，转换后的结果将使用此进制表示
  * @returns {String} - 返回转换后的数字字符串，使用指定的OutputBase进制表示
  */
-ConvertBase(nptr, InputBase, OutputBase)
-{
+ConvertBase(nptr, InputBase, OutputBase) {
     VarSetStrCapacity(&s, 66)
     value := DllCall("msvcrt.dll\_wcstoui64", "Str", nptr, "UInt", 0, "UInt", InputBase, "CDECL Int64")
     DllCall("msvcrt.dll\_i64tow", "Int64", value, "Str", s, "UInt", OutputBase, "CDECL")

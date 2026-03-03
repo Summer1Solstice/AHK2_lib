@@ -52,5 +52,5 @@ class example extends TimedTask {
         MsgBox("Task Completed")
     }
 }
-e := example()
-e.Run()
+; e := example()
+; e.Run()

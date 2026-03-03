@@ -43,19 +43,13 @@ Commands：`cd`、`ls`
 ### IniParser.ahk
 提供 `Parse` 和 `Stringify` 静态方法，用于解析 INI 字符串为 `Map` 对象，以及将 `Map` 对象转换为 INI 字符串。
 
-### IsPlus.ahk
-现在是空的。
-
 ### join.ahk
 将数组元素连接为一个字符串，元素之间使用指定的分隔符。
 
 ### Len.ahk
 返回变量的长度，支持 Array、Map、RegExMatchInfo 和 Primitive 类型
 
-### LiteralStructure.ahk
-根据字符串给出结构的AHK字面量对象，不考虑内存对齐。
-
-### organize .ahk
+### organize.ahk
 将当前目录下的所有.ahk文件按照文件名排序，并生成一个新的README.md文件，包含每个脚本的标题和说明。
 
 ### Predefined.ahk
@@ -83,6 +77,17 @@ Commands：`cd`、`ls`
 ### RunCmd.ahk
 提供执行单条或多条命令并返回输出的 AutoHotkey 函数，基于 `WScript.Shell` 实现。
 现在需要手动调用`HideConsoleWindow`来隐藏控制台窗口
+
+### TimedTask.ahk
+定时任务，通过派生类创建实例。
+
+### Timeit.ahk
+高精度的计时模块，传入一个函数，输出单次运行的平均耗时。
+如果函数需要传入参数,请使用
+```AutoHotkey
+fn := foo.Bind("args")  ; 函数
+fn1() => classobj.foo("arg")    ; 类实例方法
+```
 
 ### Timeit.ahk
 高精度的计时模块，传入一个函数，输出单次运行的平均耗时。
