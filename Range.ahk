@@ -30,7 +30,7 @@ rangeA(start, stop?, step := 1) {
     range_sub(&i) {
         i := start
         start += step
-        return i => stop
+        return i >= stop
     }
     return step > 0 ? range_add : range_sub
 }

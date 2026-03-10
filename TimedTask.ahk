@@ -9,7 +9,7 @@ class TimedTask {
     ; 启动时间
     StartTime := 0
     ; 检测间隔
-    TimerPeriod := 1
+    TimerPeriod := 100
     ; 计算启动时间
     __CalculateTime(Now := this.BaseTime) {
         if not IsTime(Now) {
@@ -24,9 +24,10 @@ class TimedTask {
     __Timer() {
         if DateDiff(A_Now, this.StartTime, "Seconds") >= 0 {
             this.onTask()
-            SetTimer(this.Timer, 0)
+            this.Close()
         }
     }
+    Close() => SetTimer(this.Timer, 0)
     ; 运行
     Run() {
         if not this.HasMethod("onTask") {
@@ -34,7 +35,9 @@ class TimedTask {
         }
         this.__CalculateTime()
         this.Timer := ObjBindMethod(this, "__Timer")
-        if MsgBox(FormatTime(this.StartTime " T0 R"), "Run Time", 1) = "OK" {
+        Text := FormatTime(this.StartTime " T0 R")
+        Text .= (DateDiff(A_Now, this.StartTime, "Seconds") >= 0) ? "`n启动时间早于当前时间，任务将立即启动！" : ""
+        if MsgBox(Text, "Run Time", 1) = "OK" {
             SetTimer(this.Timer, this.TimerPeriod)
         } else {
             MsgBox("User Canceled")
