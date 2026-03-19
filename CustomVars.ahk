@@ -6,7 +6,7 @@ C_CR := "`r"
 C_LF := "`n"
 ; \r\n
 C_CRLF := "`r`n"
-; Zero-width space
+; Zero-width-space
 C_ZeroWideSpace := Chr(0x200B)
 ; 1s = 1000ms
 C_Seconds := 1000
