@@ -9,6 +9,9 @@ Commands：`cd`、`ls`
 `#Include`其他(库|脚本)的聚合文件。
 被引入的文件通常自带对原生(对象|原始值)扩展的`DefineProp`语句。
 
+### AutoClicker.ahk
+自动连点/按住器
+
 ### Bool.ahk
 原始值基于AutoHotkey的原生`if`判断返回布尔值，`Array`, `Map`, `Object`，基于元素数量和属性数量`if`判断返回布尔值。
 
@@ -49,6 +52,9 @@ Commands：`cd`、`ls`
 ### Len.ahk
 返回变量的长度，支持 Array、Map、RegExMatchInfo 和 Primitive 类型
 
+### NormalizePath.ahk
+标准化路径
+
 ### organize.ahk
 将当前目录下的所有.ahk文件按照文件名排序，并生成一个新的README.md文件，包含每个脚本的标题和说明。
 
@@ -80,14 +86,6 @@ Commands：`cd`、`ls`
 
 ### TimedTask.ahk
 定时任务，通过派生类创建实例。
-
-### Timeit.ahk
-高精度的计时模块，传入一个函数，输出单次运行的平均耗时。
-如果函数需要传入参数,请使用
-```AutoHotkey
-fn := foo.Bind("args")  ; 函数
-fn1() => classobj.foo("arg")    ; 类实例方法
-```
 
 ### Timeit.ahk
 高精度的计时模块，传入一个函数，输出单次运行的平均耗时。
