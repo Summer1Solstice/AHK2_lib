@@ -1,50 +1,36 @@
 #Requires AutoHotkey v2.0
 
 /**
- * 鼠标连点器类 - 提供按键自动点击和长按功能
- * @param Key 要自动操作的按键名称
- * @param Mode 操作模式 ("click"，"c" 或 "hold"，"h")
+ * 鼠标连点器类 - 提供按键自动点击和长按功能。
+ * 单参数为连点模式，双参数为按住模式。
+ * @param Key1 动作函数
+ * @param Key2 动作函数
  */
 class AutoClicker {
-    __New(Key, Mode) {
-        this.key := Trim(Key, "{}")
-        switch Mode, 0 {
-            case "c": this.Call2(0)
-            case "click": this.Call2(0)
-            case "h": this.Call2(1)
-            case "hold": this.Call2(1)
-            default: throw "Invalid Mode, please use Click or Hold."
+    __New(Key1, key2?) {
+        if not (key1 is Func) {
+            throw "AutoClicker: 请传入动作函数"
         }
-    }
-    Call2(n) {
-        if n {
-            this.Call := this.Hold, this.SendKey := Send.Bind("{" this.key " Down}")
-        } else {
-            this.Call := this.Click, this.SendKey := Send.Bind("{" this.key "}")
+        this.key1 := Key1
+        if key2 ?? 0 {
+            if not (key2 is Func) {
+                throw "AutoClicker: 请传入动作函数"
+            }
+            this.key2 := key2
         }
     }
     flag := false
-    Click() {
+
+    Call() {
         if this.flag {
             this.flag := false
-            SetTimer(this.SendKey, 0)
-            SetTimer((*) => (ToolTip()), -100)
+            this.HasMethod("key2") ? this.key2.Call() : ""
+            SetTimer(this.key1, 0)
+            ToolTip()
         } else {
             this.flag := true
-            SetTimer(this.SendKey, 100)
-            ToolTip(this.key " 连点", 0, 0)
-        }
-    }
-    Hold() {
-        if this.flag {
-            this.flag := false
-            Send "{" this.key " Up}"
-            SetTimer(this.SendKey, 0)
-            SetTimer((*) => (ToolTip()), -100)
-        } else {
-            this.flag := true
-            SetTimer(this.SendKey, 100)
-            ToolTip(this.key " 按住", 0, 0)
+            SetTimer(this.key1, 100)
+            ToolTip("自动按键工作中……", 0, 0)
         }
     }
 }

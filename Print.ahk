@@ -10,6 +10,9 @@
  */
 stringify(val) {
     if val is Primitive {
+        if val is Number {
+            return val
+        }
         if val is String {
             return '"' val '"'
         }
@@ -17,16 +20,16 @@ stringify(val) {
     }
     if val is Array {
         result := "["
-        for i in val {
-            result .= stringify(i) ", "
+        loop val.Length - 1 {
+            result .= stringify(val[A_Index]) ", "
         }
-        result := RTrim(result, ", ")
+        result .= stringify(val[-1])
         return result "]"
     }
     if val is Map {
         result := "{"
         for k, v in val {
-            result .= stringify(k) ": " stringify(v) ", "
+            result .= stringify(String(k)) ": " stringify(v) ", "
         }
         result := RTrim(result, ", ")
         return result "}"
