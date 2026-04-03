@@ -1,48 +1,84 @@
 #Requires AutoHotkey v2.0
 /************************************************************************
  * @description 日期时间与时间戳
- * @date 2025/06/24
+ * @date 2026/04/03
  ***********************************************************************/
-
-; 日期时间
-class Date {
+#Include <XZ\Print>
+#Warn Unreachable, Off
+; FmtTUT，全称FormatTimeUtils，派生类date、time。
+class FmtTUT {
+    ; 转换为长日期格式
+    static LongDate(Date) => FormatTime(Date, "LongDate")
+    ; 转为时间格式
+    static TimeT0(Time) => FormatTime(Time " T0", "Time")
+    ; 转为日期时间格式
+    static DateTimeT0R(DateTime) => FormatTime(DateTime " T0 R")
     ; UTC历元
     static Epoch := "19700101000000"
     ; 时区偏移量(Seconds)
     static TimeZoneOffset := 28800
-
-    ; UTC时间戳(Seconds)
-    static Unix_Timestamp => DateDiff(A_NowUTC, Date.Epoch, "Seconds")
-    ; UTC时间戳(millisecond)
-    static ms_Timestamp => DateDiff(A_NowUTC, Date.Epoch, "Seconds") . A_MSec
-
-    ; 本地日期
-    static Local_Date => FormatTime(, "LongDate")
-    ; UTC日期
-    static UTC_Date => FormatTime(A_NowUTC, "LongDate")
-    ; 本地时间
-    static Local_Time => FormatTime("T0", "Time")
-    ; UTC时间
-    static UTC_Time => FormatTime(A_NowUTC " T0", "Time")
-    ; 本地日期时间
-    static Local_Date_Time => FormatTime("T0 R")
-    ; UTC日期时间
-    static UTC_Date_Time => FormatTime(A_NowUTC " T0 R")
-
     ; 获取时区信息
     static GetTimeZoneInfo() {
         TZI := Buffer(172, 0)
         DllCall("GetTimeZoneInformation", "Ptr", TZI)
-        return Date.TimeZoneOffset := Abs(NumGet(TZI, "Short") * 60)
+        return FmtTUT.TimeZoneOffset := Abs(NumGet(TZI, "Short") * 60)
     }
 }
+; 日期时间
+class Date {
+    ; 分解日期，当参数为A_Now时，返回等同于内置变量。
+    static Split(Date := A_Now) {
+        return {
+            Year: FormatTime(Date, "yyyy"),
+            Month: FormatTime(Date, "MM"),
+            Day: FormatTime(Date, "dd"),
+        }
+    }
+    ; UTC时间戳(Seconds)
+    static Timestamp => DateDiff(A_NowUTC, FmtTUT.Epoch, "Seconds")
+    ; UTC毫秒时间戳(millisecond)
+    static ms_Timestamp => DateDiff(A_NowUTC, FmtTUT.Epoch, "Seconds") . A_MSec
+
+    ; 本地日期
+    static Local => FmtTUT.LongDate(A_Now)
+    ; UTC日期
+    static UTC => FmtTUT.LongDate(A_NowUTC)
+}
+class Time {
+    ; 分解时间，当参数为A_Now时，返回等同于内置变量。
+    static Split(Date := A_Now) {
+        return {
+            Hour: FormatTime(Date, "HH"),
+            Min: FormatTime(Date, "mm"),
+            Sec: FormatTime(Date, "ss"),
+        }
+    }
+    ; 本地时间
+    static Local => FmtTUT.TimeT0(A_Now)
+    ; UTC时间
+    static UTC => FmtTUT.TimeT0(A_NowUTC)
+}
+class DateTime {
+    ; 本地日期时间
+    static Local => FmtTUT.DateTimeT0R(A_Now)
+    ; UTC日期时间
+    static UTC => FmtTUT.DateTimeT0R(A_NowUTC)
+}
 if A_ScriptName = "Date.ahk" {
-    for i in Date.OwnProps() {
-        ii := Date.%i%
-        if ii is Primitive {
-            OutputDebug i "=" ii "`n"
-        } else if ii is Func {
-            OutputDebug i "=" ii(Date) "`n"
+
+    for C in [FmtTUT, Date, Time, DateTime] {
+        for P in C.OwnProps() {
+            if P ~= "__|Prototype" {
+                continue
+            }
+            if C.%P% is Primitive {
+                OutputDebug(p "=" C.%P% "`n")
+            } else {
+                if C.%P%.MinParams > 1 {
+                    continue
+                }
+                OutputDebug(p "=" stringify(C.%P%()) "`n")
+            }
         }
     }
 }
