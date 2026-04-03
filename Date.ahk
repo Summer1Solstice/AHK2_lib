@@ -3,8 +3,7 @@
  * @description 日期时间与时间戳
  * @date 2026/04/03
  ***********************************************************************/
-#Include <XZ\Print>
-#Warn Unreachable, Off
+
 ; FmtTUT，全称FormatTimeUtils，派生类date、time。
 class FmtTUT {
     ; 转换为长日期格式
@@ -24,7 +23,7 @@ class FmtTUT {
         return FmtTUT.TimeZoneOffset := Abs(NumGet(TZI, "Short") * 60)
     }
 }
-; 日期时间
+; 日期
 class Date {
     ; 分解日期，当参数为A_Now时，返回等同于内置变量。
     static Split(Date := A_Now) {
@@ -44,6 +43,7 @@ class Date {
     ; UTC日期
     static UTC => FmtTUT.LongDate(A_NowUTC)
 }
+; 时间
 class Time {
     ; 分解时间，当参数为A_Now时，返回等同于内置变量。
     static Split(Date := A_Now) {
@@ -58,6 +58,7 @@ class Time {
     ; UTC时间
     static UTC => FmtTUT.TimeT0(A_NowUTC)
 }
+; 日期时间
 class DateTime {
     ; 本地日期时间
     static Local => FmtTUT.DateTimeT0R(A_Now)
@@ -65,7 +66,6 @@ class DateTime {
     static UTC => FmtTUT.DateTimeT0R(A_NowUTC)
 }
 if A_ScriptName = "Date.ahk" {
-
     for C in [FmtTUT, Date, Time, DateTime] {
         for P in C.OwnProps() {
             if P ~= "__|Prototype" {
@@ -77,7 +77,7 @@ if A_ScriptName = "Date.ahk" {
                 if C.%P%.MinParams > 1 {
                     continue
                 }
-                OutputDebug(p "=" stringify(C.%P%()) "`n")
+                try OutputDebug(p "=" C.%P%() "`n")
             }
         }
     }
