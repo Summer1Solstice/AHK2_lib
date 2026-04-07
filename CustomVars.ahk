@@ -25,3 +25,9 @@ C_Days := 24 * C_Hours
 ; 数学常量
 ; 圆周率
 C_Pi := 3.1415926535897931
+
+; 速度常量
+; 音速 340m/s
+C_SpeedOfSound := 340
+; 光速 299792458m/s
+C_SpeedOfLight := 299792458

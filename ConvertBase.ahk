@@ -31,3 +31,25 @@ BinToInt := (n) => (StrLen(n) > 1 ? BinToInt(SubStr(n, 1, -1)) << 1 : 0) | SubSt
 IntToHex := (i) => (Format("{:#x}", i))
 ; 16 -> 10
 HexToInt := (h) => (Format("{:d}", h))
+
+/**
+ * 整数转2-52进制
+ * @param int 正整数
+ * @param base 基数
+ * @returns {String} 
+ */
+IntTo_(int, base) {
+    if ( not IsInteger(int)) or (int <= 0) {
+        throw "参数错误，必须是正整数。"
+    }
+    if base < 2 or base > 52 {
+        throw "基数必须在2-52之间。"
+    }
+    static chars := StrSplit("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    result := ""
+    while int > 0 {
+        result := chars[mod(int, base) + 1] . result
+        int //= base
+    }
+    return result
+}

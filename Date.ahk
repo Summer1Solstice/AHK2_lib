@@ -4,7 +4,7 @@
  * @date 2026/04/03
  ***********************************************************************/
 
-; FmtTUT，全称FormatTimeUtils，派生类date、time。
+; FmtTUT，全称FormatTimeUtils
 class FmtTUT {
     ; 转换为长日期格式
     static LongDate(Date) => FormatTime(Date, "LongDate")
