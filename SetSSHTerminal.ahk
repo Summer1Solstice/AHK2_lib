@@ -1,4 +1,12 @@
+/************************************************************************
+ * @description 修改ssh终端为pwsh或bash
+ * @author 
+ * @date 2026/04/13
+ * @version 0.0.0
+ ***********************************************************************/
+
 #Requires AutoHotkey v2.0
+
 if not A_IsAdmin {
     Run '*RunAs "' A_AhkPath '" /restart "' A_ScriptFullPath '"'
 }

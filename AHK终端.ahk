@@ -1,9 +1,11 @@
-#Requires AutoHotkey v2.0
 /************************************************************************
  * @description 搞笑作品，Linux终端模拟器
  * @date 2025/08/29
- * @version 0.0.2
+ * @learn https://learn.microsoft.com/zh-cn/windows/console/
  ***********************************************************************/
+
+#Requires AutoHotkey v2.0
+
 #SingleInstance ; 替换旧实例
 Persistent  ; 持久运行
 #Include join.ahk

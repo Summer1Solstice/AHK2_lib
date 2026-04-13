@@ -1,8 +1,12 @@
-#Requires AutoHotkey v2.0
 /************************************************************************
- * @description 日期时间与时间戳
- * @date 2026/04/03
+ * @description `FmtTUT`工具类，对内置函数`FormatTime`的包装。
+ * `Date`、`Time`、`DateTime`，提供日期、时间、日期时间相关的派生类。
+ * @author 
+ * @date 2026/04/13
+ * @version 0.0.0
  ***********************************************************************/
+
+#Requires AutoHotkey v2.0
 
 ; FmtTUT，全称FormatTimeUtils
 class FmtTUT {
