@@ -2,7 +2,7 @@
  * @description Python range()的AutoHotkey实现;
  * range()，Python风格，起始值从0开始、左闭右开的特性。
  * rangeA()，起始值从1开始，闭区间。
- * @author 
+ * @author Summer1Solstice
  * @date 2026/04/13
  * @version 0.0.0
  ***********************************************************************/

@@ -5,7 +5,7 @@
  * fn := foo.Bind("args")  ; 函数
  * fn1() => classobj.foo("arg")    ; 类实例方法
  * ```
- * @author 
+ * @author Summer1Solstice
  * @date 2026/04/13
  * @version 0.0.0
  ***********************************************************************/
