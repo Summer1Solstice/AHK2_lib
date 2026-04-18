@@ -1,5 +1,6 @@
 /************************************************************************
  * @description 定时任务，通过派生类创建实例。
+ * TODO：重写，有gui，多任务，任务管理。
  * @author Summer1Solstice
  * @date 2026/04/13
  * @version 0.0.0
@@ -46,6 +47,7 @@ class TimedTask {
         Text .= (DateDiff(A_Now, this.StartTime, "Seconds") >= 0) ? "`n启动时间早于当前时间，任务将立即启动！" : ""
         if MsgBox(Text, "Run Time", 1) = "OK" {
             SetTimer(this.Timer, this.TimerPeriod)
+            A_IconTip .= this.StartTime "`n"
         } else {
             MsgBox("User Canceled")
         }

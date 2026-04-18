@@ -16,6 +16,8 @@ class FmtTUT {
     static TimeT0(Time) => FormatTime(Time " T0", "Time")
     ; 转为日期时间格式
     static DateTimeT0R(DateTime) => FormatTime(DateTime " T0 R")
+    ; 转为RFC1123格式
+    static RFC1123(DateTime) => FormatTime(DateTime " L0x0409", "ddd, d MMM yyyy HH:mm:ss 'GMT'")
     ; UTC历元
     static Epoch := "19700101000000"
     ; 时区偏移量(Seconds)
@@ -68,6 +70,8 @@ class DateTime {
     static Local => FmtTUT.DateTimeT0R(A_Now)
     ; UTC日期时间
     static UTC => FmtTUT.DateTimeT0R(A_NowUTC)
+    ; RFC1123日期时间
+    static RFC1123 => FmtTUT.RFC1123(A_NowUTC)
 }
 if A_ScriptName = "Date.ahk" {
     for C in [FmtTUT, Date, Time, DateTime] {
