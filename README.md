@@ -1,9 +1,6 @@
 # AHK2_lib
 - [ ] 更新跟进脚本的说明
 # 包含脚本
-### AHK终端.ahk
-搞笑作品，Linux终端模拟器
-
 ### (String|Array|Map)Plus.ahk
 `#Include`其他(库|脚本)的聚合文件。
 被引入的文件通常自带对原生(对象|原始值)扩展的`DefineProp`语句。
@@ -21,10 +18,6 @@
 ### ConnectWifi.ahk
 连接指定名称的 Wi-Fi 网络。
 
-### Console.ahk
-弃用！
-从`AHK终端.ahk`分离出的功能类。
-
 ### ConvertBase.ahk
 基于`msvcrt.dll`的进制转换，包含一个`ConvertBase`函数，可进行 2-32 进制转换，
 以及`hex`、`bin`、`oct`、`int`四个包装函数。
@@ -35,9 +28,6 @@
 ### Date.ahk
 `FmtTUT`工具类，对内置函数`FormatTime`的包装。
 `Date`、`Time`、`DateTime`，提供日期、时间、日期时间相关的派生类。
-
-### Dota2搜索英雄物品别名对照.ahk
-用于将Dota2的物品和英雄的搜索别名建立一个对照表
 
 ### FormatLog.ahk
 生成包含日期时间、日志等级、函数名和说明的格式化日志文本
@@ -76,7 +66,8 @@
 
 ### Print.ahk
 基于`OutputDebug`将变量字符串化输出到调试控制台。
-还包含一个`stringify`函数，用于字符串化变量，不遵守`JSON`规范。
+还包含一个`stringify`函数，用于字符串化变量，不遵守`JSON`规范，
+而是尽可能还原能在AHK中直接定义相同变量的文本。
 
 ### Radians_Degrees.ahk
 角度转弧度、弧度转角度

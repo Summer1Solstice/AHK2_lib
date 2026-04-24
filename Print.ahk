@@ -1,6 +1,7 @@
 /************************************************************************
  * @description 基于`OutputDebug`将变量字符串化输出到调试控制台。
- * 还包含一个`stringify`函数，用于字符串化变量，不遵守`JSON`规范。
+ * 还包含一个`stringify`函数，用于字符串化变量，不遵守`JSON`规范，
+ * 而是尽可能还原能在AHK中直接定义相同变量的文本。
  * @author Summer1Solstice
  * @date 2026/04/13
  * @version 0.0.0
@@ -34,20 +35,20 @@ stringify(val) {
         return result "]"
     }
     if val is Map {
-        result := "{"
+        result := "Map("
         for k, v in val {
-            result .= stringify(String(k)) ": " stringify(v) ", "
+            result .= stringify(String(k)) ", " stringify(v) ", "
         }
         result := RTrim(result, ", ")
-        return result "}"
+        return result ")"
     }
     if val is Func {
-        return val.name "()"
+        return val.name
     }
     if val is Object {
         result := "{"
         for k, v in val.OwnProps() {
-            result .= stringify(k) ": " stringify(v) ", "
+            result .= Trim(stringify(k), '"') ": " stringify(v) ", "
         }
         result := RTrim(result, ", ")
         return result "}"
