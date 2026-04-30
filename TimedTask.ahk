@@ -47,7 +47,7 @@ class TimedTask {
         Text .= (DateDiff(A_Now, this.StartTime, "Seconds") >= 0) ? "`n启动时间早于当前时间，任务将立即启动！" : ""
         if MsgBox(Text, "Run Time", 1) = "OK" {
             SetTimer(this.Timer, this.TimerPeriod)
-            A_IconTip .= this.StartTime "`n"
+            A_IconTip .= "`n" this.StartTime
         } else {
             MsgBox("User Canceled")
         }
