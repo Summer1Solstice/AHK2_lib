@@ -15,7 +15,8 @@
  */
 ConnectWifi(SSID) {
     command := "netsh wlan show interface | findstr SSID"   ; 获取当前Wi-Fi名称
-    commandA := "netsh wlan show networks"
+    commandA := "netsh wlan show networks"  ; 获取可见Wi-Fi名称
+    commandB := "netsh wlan disconnect" ; 断开Wi-Fi
     if InStr(RunWaitOne(command), SSID) {
         return 2
     }

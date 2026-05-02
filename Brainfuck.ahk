@@ -20,7 +20,7 @@ Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
     CodeList := []  ; 创建代码列表
     CodePtr := 1    ; 代码指针
     MemoryPtr := 1  ; 内存指针
-    MemoryPtrRecord := 1
+    MemoryPtrTop := 1   ; 内存指针峰值
     output := []    ; 创建输出变量
     Bracket := []   ; 创建括号列表
     BracketMap := Map() ; 创建括号映射
@@ -63,8 +63,8 @@ Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
                 if MemoryPtr = MomorySize {
                     throw IndexError("内存指针越界 > Memory pointer out of bounds")
                 }
-                if MemoryPtr > MemoryPtrRecord {
-                    MemoryPtrRecord := MemoryPtr
+                if MemoryPtr > MemoryPtrTop {
+                    MemoryPtrTop := MemoryPtr
                 }
             case ",":
                 text := InputBox()
@@ -85,7 +85,7 @@ Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
     if OutputMemoryCells {
         OPtr := ""
         OMemory := ""
-        loop MemoryPtrRecord {
+        loop MemoryPtrTop {
             if A_Index = MemoryPtr {
                 OPtr .= Format("{1:-5}", A_Index "^")
                 OMemory .= Format("{1:-5}", MemoryCells[A_Index])
@@ -107,19 +107,19 @@ Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
 if A_ScriptName = "Brainfuck.ahk" {
     text := "
     (
-++++++++
-[
-    >++++
-    >++++++++++++
-    <<-
-]
->>-
-[
-    <.
-    +
-    >-
-]
-++++++++++.
-)"
-    OutputDebug(Brainfuck(text, , false))
+        ++++++++
+        [
+            >++++
+            >++++++++++++
+            <<-
+        ]
+        >>-
+        [
+            <.
+            +
+            >-
+        ]
+        ++++++++++.
+    )"
+    OutputDebug(Brainfuck(text))
 }
