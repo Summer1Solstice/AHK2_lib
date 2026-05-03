@@ -3,7 +3,7 @@
  * 还包含一个`stringify`函数，用于字符串化变量，不遵守`JSON`规范，
  * 而是尽可能还原能在AHK中直接定义相同变量的文本。
  * @author Summer1Solstice
- * @date 2026/04/13
+ * @date 2026/05/03
  * @version 0.0.0
  ***********************************************************************/
 
@@ -28,10 +28,10 @@ stringify(val) {
     }
     if val is Array {
         result := "["
-        loop val.Length - 1 {
-            result .= stringify(val[A_Index]) ", "
+        for i in val {
+            result .= stringify(i) ", "
         }
-        result .= stringify(val[-1])
+        result := RTrim(result, ", ")
         return result "]"
     }
     if val is Map {
@@ -54,6 +54,13 @@ stringify(val) {
         return result "}"
     }
 }
+
+/**
+ * 可视化\n \r \t
+ * @param str 待处理的字符串
+ * @returns {String} 处理后的字符串
+ */
+VisibleCRLF(str) => StrReplace(StrReplace(StrReplace(str, "`n", "\n"), "`r", "\r"), "`t", "\t")
 /**
  * 将变量转换为字符串形式并输出到调试窗口
  * 该函数使用 stringify 函数将变量转换为字符串表示形式，然后输出到调试窗口
