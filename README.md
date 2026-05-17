@@ -94,6 +94,9 @@ rangeA()，起始值从1开始，闭区间。
 ### SetSSHTerminal.ahk
 修改ssh终端为pwsh或bash
 
+### TextReplaceUtils.ahk
+进行多次文本替换
+
 ### TimedTask.ahk
 定时任务，通过派生类创建实例。
 TODO：重写，有gui，多任务，任务管理。

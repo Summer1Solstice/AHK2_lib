@@ -10,11 +10,11 @@
 /**
  * RegExMatch的全局模式匹配
  * 
- * @param str   被查找的字符串
+ * @param &str   被查找的字符串
  * @param ex    正则表达式
  * @returns {Array} 返回数组，元素是匹配对象(RegExMatchInfo)
  */
-RegExGlobalMatch(str, ex) {
+RegExGlobalMatch(&str, ex) {
     SPos := 1
     result := Array()
     result.Default := ""

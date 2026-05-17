@@ -14,10 +14,4 @@ Path := Format("{1}{2}{3}", PathA, PathB, PathC)
 SetWorkingDir(Path)
 FileRecycle("code.ico")
 FileCopy("default.ico", "code.ico")
-Pathdb := LocalAppdata "\Microsoft\Windows\Explorer\"
-loop files Pathdb "*.db" {
-    if A_LoopFileName ~= "^iconcache_\d+" {
-        try FileDelete(A_LoopFilePath)
-    }
-}
-RunHidden("taskkill /f /im explorer.exe && start explorer.exe")
+MsgBox("重启后才能生效")

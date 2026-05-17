@@ -16,10 +16,10 @@
  */
 join(arr, sep := " ") {
     result := ""
-    loop arr.Length - 1 {
-        result .= arr[A_Index] . sep
+    for i in arr {
+        result .= i . sep
     }
-    return result .= arr[-1]
+    return RTrim(result, sep)
 }
 Array.Prototype.DefineProp("Join", { call: join })
 
