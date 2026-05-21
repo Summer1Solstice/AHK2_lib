@@ -30,11 +30,14 @@
 自定义变量，命名格式仿照AHK内置变量，但是使用`C_`前缀。
 
 ### Date.ahk
-`FmtTUT`工具类，对内置函数`FormatTime`的包装。
-`Date`、`Time`、`DateTime`，提供日期、时间、日期时间相关的派生类。
+`FmtTUT`工具类，~~对内置函数`FormatTime`的包装~~。
+`Date`、`Time`、`DateTime`、`TimeStamp`，提供日期、时间、日期时间、时间戳相关的派生类。
 
 ### FormatLog.ahk
 生成包含日期时间、日志等级、函数名和说明的格式化日志文本
+
+### Full2Half.ahk
+全角字符、半角字符互转
 
 ### GetFileHash.ahk
 获取文件hash值
@@ -95,7 +98,7 @@ rangeA()，起始值从1开始，闭区间。
 修改ssh终端为pwsh或bash
 
 ### TextReplaceUtils.ahk
-进行多次文本替换
+进行多次文本替换的包装函数
 
 ### TimedTask.ahk
 定时任务，通过派生类创建实例。

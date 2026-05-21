@@ -1,9 +1,9 @@
 /************************************************************************
- * @description `FmtTUT`工具类，对内置函数`FormatTime`的包装。
- * `Date`、`Time`、`DateTime`，提供日期、时间、日期时间相关的派生类。
+ * @description `FmtTUT`工具类，~~对内置函数`FormatTime`的包装~~。
+ * `Date`、`Time`、`DateTime`、`TimeStamp`，提供日期、时间、日期时间、时间戳相关的派生类。
  * @author Summer1Solstice
- * @date 2026/04/13
- * @version 0.0.0
+ * @date 2026/05/20
+ * @version 0.1.0
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
@@ -20,6 +20,8 @@ class FmtTUT {
     static RFC1123(DateTime) => FormatTime(DateTime " L0x0409", "ddd, d MMM yyyy HH:mm:ss 'GMT'")
     ; UTC历元
     static Epoch := "19700101000000"
+    ; 时间戳
+    static TimeStamp(DateTime) => DateDiff(DateTime, this.Epoch, "Seconds")
     ; 时区偏移量(Seconds)
     static TimeZoneOffset := 28800
     ; 获取时区信息
@@ -39,11 +41,6 @@ class Date {
             Day: FormatTime(Date, "dd"),
         }
     }
-    ; UTC时间戳(Seconds)
-    static Timestamp => DateDiff(A_NowUTC, FmtTUT.Epoch, "Seconds")
-    ; UTC毫秒时间戳(millisecond)
-    static ms_Timestamp => DateDiff(A_NowUTC, FmtTUT.Epoch, "Seconds") . A_MSec
-
     ; 本地日期
     static Local => FmtTUT.LongDate(A_Now)
     ; UTC日期
@@ -72,6 +69,14 @@ class DateTime {
     static UTC => FmtTUT.DateTimeT0R(A_NowUTC)
     ; RFC1123日期时间
     static RFC1123 => FmtTUT.RFC1123(A_NowUTC)
+}
+class TimeStamp {
+    ; UTC时间戳(Seconds)
+    static UTC => FmtTUT.TimeStamp(A_NowUTC)
+    ; UTC毫秒时间戳(millisecond)
+    static ms => FmtTUT.TimeStamp(A_NowUTC) . A_MSec
+    ; 时间戳转日期时间
+    static toDateTime(TimeStamp) => DateAdd(FmtTUT.Epoch, TimeStamp, "Seconds")
 }
 if A_ScriptName = "Date.ahk" {
     for C in [FmtTUT, Date, Time, DateTime] {
