@@ -45,9 +45,8 @@
 ### HowRun.ahk
 通过标准输出、`A_DebuggerName`、`A_Args`、控制台附加等方式判断脚本如何运行。
 
-### IniParser.ahk
-弃用！
-提供 `Parse` 和 `Stringify` 静态方法，用于解析 INI 字符串为 `Map` 对象，以及将 `Map` 对象转换为 INI 字符串。
+### iniUtils.ahk
+类`iniUtils`，包含两个方法`to_object`将ini转为类中的对象；`to_string` 将对象转为ini格式字符串。
 
 ### join.ahk
 将数组元素连接为一个字符串，元素之间使用指定的分隔符。
