@@ -1,6 +1,12 @@
 # AHK2_lib
 - [ ] 更新跟进脚本的说明
 # 包含脚本
+### ArgsParse.ahk
+`A_Args` 命令行参数解析，仅支持以下形式的参数：
+- `-k` or `--key`    定义格式
+- `-k 0` or `--key 0`    可解析
+- `-k=1` or `--key=1`    可解析
+
 ### (String|Array|Map)Plus.ahk
 `#Include`其他(库|脚本)的聚合文件。
 被引入的文件通常自带对原生(对象|原始值)扩展的`DefineProp`语句。
@@ -46,7 +52,7 @@
 通过标准输出、`A_DebuggerName`、`A_Args`、控制台附加等方式判断脚本如何运行。
 
 ### iniUtils.ahk
-类`iniUtils`，包含两个方法`to_object`将ini转为类中的对象；`to_string` 将对象转为ini格式字符串。
+类`iniUtils`，包含两个方法`ToObject`将ini转为类中的对象；`ToString` 将对象转为ini格式字符串。
 
 ### join.ahk
 将数组元素连接为一个字符串，元素之间使用指定的分隔符。

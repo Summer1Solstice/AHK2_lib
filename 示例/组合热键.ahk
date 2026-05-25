@@ -1,5 +1,6 @@
 #Requires AutoHotkey v2
 CoordMode("ToolTip", "Screen")
+ChordShortcutLatency := 5000
 #t::
 tk_Tip(tk) {
     if not RegExMatch(tk, "([#!^+&<>*~$]+)(.*?)$", &match) {
@@ -17,10 +18,9 @@ tk_Tip(tk) {
     }
     static x := A_ScreenWidth // 2, y := A_ScreenHeight // 2
     ToolTip("(" tk ")已按下。正在等待按下第二个键…", x, y)
-    SetTimer(ToolTip, 3000)
+    SetTimer(ToolTip, ChordShortcutLatency)
 }
-#s:: tk_Tip(ThisHotkey)
-#HotIf A_PriorHotkey = "#t" and A_TimeSincePriorHotkey < 3000
+#HotIf A_PriorHotkey = "#t" and A_TimeSincePriorHotkey < ChordShortcutLatency
 t:: Run('wt.exe -w 0')
 g:: Run('wt.exe -w 0 -p "Git Bash"')
 u:: Run('wt.exe -w 0 -p "Ubuntu-24.04"')

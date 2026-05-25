@@ -70,5 +70,10 @@ VisibleCRLF(str) => StrReplace(StrReplace(StrReplace(str, "`n", "\n"), "`r", "\r
  * @returns 无返回值，直接输出到调试窗口
  */
 Print(val) {
-    OutputDebug stringify(val) '`n'
+    str := stringify(val) '`n'
+    try {
+        FileAppend(str, "*")
+    } catch {
+        OutputDebug(str)
+    }
 }

@@ -17,7 +17,7 @@ Bool(var) {
     switch Type(var) {
         case "Array": return var.Length ? true : false
         case "Map": return var.Count ? true : false
-        case "RegExMatchInfo": return var.Len ? true : false
+        ; case "RegExMatchInfo": return var.Len ? true : false
         case "String": return var ? true : false
         case "Integer": return var ? true : false
         case "Float": return var ? true : false
