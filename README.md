@@ -2,10 +2,7 @@
 - [ ] 更新跟进脚本的说明
 # 包含脚本
 ### ArgsParse.ahk
-`A_Args` 命令行参数解析，仅支持以下形式的参数：
-- `-k` or `--key`    定义格式
-- `-k 0` or `--key 0`    可解析
-- `-k=1` or `--key=1`    可解析
+`A_Args` 命令行参数解析，如何使用？请看文件末尾的示例。
 
 ### (String|Array|Map)Plus.ahk
 `#Include`其他(库|脚本)的聚合文件。
