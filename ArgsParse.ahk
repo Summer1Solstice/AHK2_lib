@@ -122,7 +122,7 @@ class ArgsParse {
 /*
 A_Args := [4, "--abc", "1", "-d=2", "--cos=3", 5]
 ; A_Args := ["-v"]
-args := ArgsParse("A_Args 解析", "V0.0.1")
+args := ArgsParse("A_Args 解析", "V0.1.0")
 args.AddArgument("--abc", "-a", "abc", "ABC")
 args.AddArgument("--def", "-d", "def", "DEF")
 args.AddArgument("--cos", "-c", "cos", "COS")

@@ -18,6 +18,9 @@
 ### Brainfuck.ahk
 `Brainfuck`语言的解释器，无视`+-,.<>[]`之外的字符。兼容`UTF-8`编码字符输出。
 
+### CommandLineToArgvW.ahk
+命令行参数文本转数组，基于`Shell32\CommandLineToArgvW`。
+
 ### ConnectWifi.ahk
 连接指定名称的 Wi-Fi 网络。
 
