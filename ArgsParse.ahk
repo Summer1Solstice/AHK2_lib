@@ -1,8 +1,8 @@
 /************************************************************************
  * @description `A_Args` 命令行参数解析，如何使用？请看文件末尾的示例。
  * @author 
- * @date 2026/05/25
- * @version 0.1.0
+ * @date 2026/05/27
+ * @version 0.1.1
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
@@ -77,8 +77,11 @@ class ArgsParse {
     /**
      * 解析 A_Args
      */
-    ParseArgs() {
-        if not A_Args.Length {
+    ParseArgs(Args := A_Args) {
+        if not (Args is Array) {
+            throw "参数必须是数组"
+        }
+        if not Args.Length {
             return
         }
         Print(text) {
@@ -90,7 +93,7 @@ class ArgsParse {
             Exit()
         }
         skip := false
-        for i in A_Args {
+        for i in Args {
             if i = "-h" or i = "--help" {
                 Print(this.__help . this.__help_k . this.__help_p)
             } else if i = "-v" or i = "--version" {
@@ -105,7 +108,7 @@ class ArgsParse {
                     if match["eq"] {
                         this.__Args[match["key"]](match["value"])
                     } else {
-                        this.__Args[match["key"]](A_Args[A_Index + 1])
+                        this.__Args[match["key"]](Args[A_Index + 1])
                         skip := true
                     }
                 } else {
@@ -123,11 +126,11 @@ class ArgsParse {
 A_Args := [4, "--abc", "1", "-d=2", "--cos=3", 5]
 ; A_Args := ["-v"]
 args := ArgsParse("A_Args 解析", "V0.1.0")
-args.AddArgument("--abc", "-a", "abc", "ABC")
-args.AddArgument("--def", "-d", "def", "DEF")
-args.AddArgument("--cos", "-c", "cos", "COS")
-args.AddArgument("p1", , 0, "Position arg 1")
-args.AddArgument("p2", , 0, "Position arg 2")
+args.AddArgument("--abc", "-a", "abc", "keyword argument ABC")
+args.AddArgument("--def", "-d", "def", "keyword argument DEF")
+args.AddArgument("--cos", "-c", "cos", "keyword argument COS")
+args.AddArgument("p1", , 0, "Position argument 1")
+args.AddArgument("p2", , 0, "Position argument 2")
 args.ParseArgs()
 OutputDebug args.abc
 OutputDebug args.a
