@@ -1,8 +1,8 @@
 /************************************************************************
  * @description 自动连点/按住器
  * @author Summer1Solstice
- * @date 2026/04/13
- * @version 0.0.0
+ * @date 2026/06/01
+ * @version 0.0.1
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
@@ -31,13 +31,20 @@ class AutoClicker {
     Call() {
         if this.flag {
             this.flag := false
-            this.HasMethod("key2") ? this.key2.Call() : ""
+            if this.HasMethod("key2") {
+                this.key2.Call()
+            }
             SetTimer(this.key1, 0)
             ToolTip()
         } else {
             this.flag := true
             SetTimer(this.key1, 100)
-            ToolTip("自动按键工作中……", 0, 0)
+            if this.HasMethod("key2") {
+                ToolTip("自动按住工作中……", 0, 0)
+            } else {
+                ToolTip("自动连点工作中……", 0, 0)
+            }
+
         }
     }
 }
