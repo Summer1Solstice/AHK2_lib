@@ -12,7 +12,6 @@ README := FileRead("README.md")
 new_readme := "
 (
 # AHK2_lib
-- [ ] 更新跟进脚本的说明
 # 包含脚本`n
 )"
 Plus := false

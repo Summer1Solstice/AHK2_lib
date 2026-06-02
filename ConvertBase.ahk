@@ -1,6 +1,8 @@
 /************************************************************************
  * @description 基于`msvcrt.dll`的进制转换，包含一个`ConvertBase`函数，可进行 2-32 进制转换，
  * 以及`hex`、`bin`、`oct`、`int`四个包装函数。
+ * `IntToBin`、`BinToInt`、`IntToHex`、`HexToInt`，四个AHK原生实现。
+ * `IntTo_`函数通过计算转换 2-62 进制，不遵循常见的进制规范。
  * @author Summer1Solstice
  * @date 2026/04/13
  * @version 0.0.0

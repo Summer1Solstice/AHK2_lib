@@ -10,7 +10,7 @@
 /**
  * 读取ini文件，将ini转为类中的对象属性。
  * 访问格式：ini.[section].[key] 获取值；
- * 添加格式：ini.[section].[key] = value；
+ * 添加格式：ini.[section].[key] := value；
  * 类属性`SectionList`包含所有section；
  * 类属性`[section]`拥有属性`__keys`包含所有key。
  * 忽略不在段内的键值对。

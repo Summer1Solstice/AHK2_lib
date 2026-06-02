@@ -1,5 +1,4 @@
 # AHK2_lib
-- [ ] 更新跟进脚本的说明
 # 包含脚本
 ### ArgsParse.ahk
 `A_Args` 命令行参数解析，如何使用？请看文件末尾的示例。
@@ -27,6 +26,8 @@
 ### ConvertBase.ahk
 基于`msvcrt.dll`的进制转换，包含一个`ConvertBase`函数，可进行 2-32 进制转换，
 以及`hex`、`bin`、`oct`、`int`四个包装函数。
+`IntToBin`、`BinToInt`、`IntToHex`、`HexToInt`，四个AHK原生实现。
+`IntTo_`函数通过计算转换 2-62 进制，不遵循常见的进制规范。
 
 ### ConvertUtils.ahk
 单位换算工具类，包含数值、单位分离方法，乘法除法方法，浮点数格式化方法。
