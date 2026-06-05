@@ -78,7 +78,9 @@ class TimeStamp {
     ; 时间戳转日期时间
     static toDateTime(TimeStamp) => DateAdd(FmtTUT.Epoch, TimeStamp, "Seconds")
 }
-if A_ScriptName = "Date.ahk" {
+
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
     for C in [FmtTUT, Date, Time, DateTime] {
         for P in C.OwnProps() {
             if P ~= "__|Prototype" {
@@ -95,3 +97,4 @@ if A_ScriptName = "Date.ahk" {
         }
     }
 }
+;@Ahk2Exe-IgnoreEnd

@@ -3,6 +3,7 @@
  * @author 
  * @date 2026/05/27
  * @version 0.0.0
+ * @learn https://learn.microsoft.com/zh-cn/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
@@ -28,3 +29,10 @@ CommandLineToArgvW(lpCmdLine) {
     }
     return arr
 }
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    for i in CommandLineToArgvW('-a 1 "-b=1 2 3"') {
+        OutputDebug(i "`n")
+    }
+}
+;@Ahk2Exe-IgnoreEnd

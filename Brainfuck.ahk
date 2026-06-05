@@ -104,7 +104,8 @@ Brainfuck(Code, MomorySize := 100, OutputMemoryCells := false) {
     }
 }
 
-if A_ScriptName = "Brainfuck.ahk" {
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
     text := "
     (
         ++++++++
@@ -123,3 +124,4 @@ if A_ScriptName = "Brainfuck.ahk" {
     )"
     OutputDebug(Brainfuck(text))
 }
+;@Ahk2Exe-IgnoreEnd

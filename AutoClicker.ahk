@@ -31,10 +31,10 @@ class AutoClicker {
     Call() {
         if this.flag {
             this.flag := false
+            SetTimer(this.key1, 0)
             if this.HasMethod("key2") {
                 this.key2.Call()
             }
-            SetTimer(this.key1, 0)
             ToolTip()
         } else {
             this.flag := true

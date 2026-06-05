@@ -1,6 +1,6 @@
 /************************************************************************
  * @description 定时任务，通过派生类创建实例。
- * TODO：重写，有gui，多任务，任务管理。
+ * 简陋，无优化改进计划。
  * @author Summer1Solstice
  * @date 2026/04/13
  * @version 0.0.0
@@ -54,15 +54,19 @@ class TimedTask {
     }
 }
 
-; 示例 1天1时1分1秒后执行
-class example extends TimedTask {
-    Days := 1
-    Hours := 1
-    Minutes := 1
-    Seconds := 1
-    onTask() {
-        MsgBox("Task Completed")
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    ; 示例 1天1时1分1秒后执行
+    class example extends TimedTask {
+        Days := 1
+        Hours := 1
+        Minutes := 1
+        Seconds := 1
+        onTask() {
+            MsgBox("Task Completed")
+        }
     }
+    e := example()
+    e.Run()
 }
-; e := example()
-; e.Run()
+;@Ahk2Exe-IgnoreEnd

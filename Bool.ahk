@@ -34,3 +34,14 @@ Bool(var) {
             throw TypeError("Bool() expects a value of type Integer, Float, String, Array, Map, Object.", , "And you're sending in " Type(var))
     }
 }
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    OutputDebug Bool([]) Bool([1]) "`n"
+    OutputDebug Bool(Map()) Bool(Map(1, 1)) "`n"
+    OutputDebug Bool("") Bool("a") "`n"
+    OutputDebug Bool("false") Bool("true") "`n"
+    OutputDebug Bool(0) Bool(1) "`n"
+    OutputDebug Bool(0.0) Bool(1.0) "`n"
+    OutputDebug Bool({}) Bool({ 1: 1 }) "`n"
+}
+;@Ahk2Exe-IgnoreEnd

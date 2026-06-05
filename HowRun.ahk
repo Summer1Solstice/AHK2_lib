@@ -39,5 +39,8 @@ HowRun() {
     }
     return "Direct"
 }
-if A_ScriptName = "HowRun.ahk"
-    MsgBox HowRun()
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    MsgBox(HowRun())
+}
+;@Ahk2Exe-IgnoreEnd

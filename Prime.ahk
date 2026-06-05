@@ -52,7 +52,9 @@ class Prime {
         return true
     }
 }
-if A_ScriptName = "Prime.ahk" {
+
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
     result := Prime.EulerSieve(100000)
     OutputDebug(result.Length "`n")
     for i in result {
@@ -62,3 +64,4 @@ if A_ScriptName = "Prime.ahk" {
         }
     }
 }
+;@Ahk2Exe-IgnoreEnd

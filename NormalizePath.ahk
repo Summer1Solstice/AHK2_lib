@@ -13,3 +13,8 @@ NormalizePath(path) {
     DllCall("GetFullPathName", "str", path, "uint", cc, "ptr", buf, "ptr", 0)
     return StrGet(buf)
 }
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    OutputDebug(NormalizePath("C:\\Windows//System32\.\notepad.exe"))
+}
+;@Ahk2Exe-IgnoreEnd

@@ -10,9 +10,19 @@ FileEncoding("UTF-8-RAW")
 
 README := FileRead("README.md")
 new_readme := "
-(
-# AHK2_lib
-# 包含脚本`n
+(`
+    # AHK2_lib
+    大部分脚本在单独运行时，会运行用于测试或演示的代码。
+    其格式如下：
+    ```AutoHotkey
+    ;@Ahk2Exe-IgnoreBegin   ; 编译器指令，忽略以下代码
+    ;如果脚本是从外部文件加载的, 这等同于 A_ScriptFullPath, 除非该行属于脚本的 #Include 文件之一.
+    if A_LineFile = A_ScriptFullPath {
+       ; 测试代码 
+    }
+    ;@Ahk2Exe-IgnoreEnd     ; 编译器指令，忽略代码结束
+    ```
+    # 包含脚本`n
 )"
 Plus := false
 add(text) {

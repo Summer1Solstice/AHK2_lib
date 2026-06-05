@@ -27,3 +27,13 @@ RegExReplace_s(&str, list) {
         str := RegExReplace(str, i*)
     }
 }
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    s := "abacadae"
+    StrReplace_s(&s, [["b"], ["c"], ["d"], ["e"]])
+    OutputDebug s "`n"
+    s := "a1a2a3a4"
+    RegExReplace_s(&s, [["\d"], ["a", "A"]])
+    OutputDebug s "`n"
+}
+;@Ahk2Exe-IgnoreEnd

@@ -59,7 +59,3 @@ RunHidden(command) {
     ; 使用 shell.Run 并添加隐藏窗口参数 (0 = 隐藏)
     shell.Run(A_ComSpec " /C " command, 0, true)
 }
-
-if A_ScriptName = "RunWait.ahk" {
-    HideConsoleWindow()
-}

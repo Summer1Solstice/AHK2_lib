@@ -21,3 +21,12 @@ FormatLog(Text, Level := 1, Source := A_ThisFunc) {
     FormatStr := Source ? "{1} {2} {3:-5} - [{4}] {5}`n" : "{1} {2} {3:-5} - {5}`n"
     return Format(FormatStr, date, time, LevelList[Level], Source, Text)
 }
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    OutputDebug(FormatLog("test",1))
+    OutputDebug(FormatLog("test",2))
+    OutputDebug(FormatLog("test",3))
+    OutputDebug(FormatLog("test",4))
+    OutputDebug(FormatLog("test",5))
+}
+;@Ahk2Exe-IgnoreEnd

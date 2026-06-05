@@ -20,3 +20,12 @@ MergeBuffer(buf1, buf2) {
     DllCall("RtlCopyMemory", "Ptr", bfs.Ptr + buf1.Size, "Ptr", buf2.Ptr, "Uint", buf2.Size)
     return bfs
 }
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    buf1 := Buffer(1)
+    buf2 := Buffer(1)
+    StrPut("h", buf1, 1, "utf-8")
+    StrPut("i", buf2, 1, "utf-8")
+    OutputDebug(StrGet(MergeBuffer(buf1, buf2), "utf-8"))
+}
+;@Ahk2Exe-IgnoreEnd

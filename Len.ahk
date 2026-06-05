@@ -13,7 +13,6 @@
  * 支持的数据类型：
  * - Array: 返回数组元素个数 (var.Length)
  * - Map: 返回键值对个数 (var.Count)
- * - RegExMatchInfo: 返回匹配信息长度 (var.Len)
  * - String: 返回字符串长度 (StrLen(var))
  * - Integer: 返回数字字符长度 (StrLen(var))
  * - Float: 返回浮点数字符长度 (StrLen(var))
@@ -27,7 +26,6 @@ len(var) {
     switch Type(var) {
         case "Array": return var.Length
         case "Map": return var.Count
-        case "RegExMatchInfo": return var.Len
         case "String": return StrLen(var)
         case "Integer": return StrLen(var)
         case "Float": return StrLen(var)
@@ -35,17 +33,14 @@ len(var) {
         default: throw TypeError(Type(var))
     }
 }
-if A_ScriptName = "Len.ahk" {
-    list := []
-    list.Push([1])                  ; 1
-    list.Push(Map(1, 2, 3, 4))      ; 2
-    RegExMatch("123", "\d", &match)
-    list.Push(match)                ; 1
-    list.Push("12345")              ; 5
-    list.Push({ a: 1 })             ; 1
-    list.Push(1)                    ; 1
-    list.Push(1.0)                  ; 3
-    for i in list {
-        OutputDebug len(i) "`n"
-    }
+
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    OutputDebug(len([1]))
+    OutputDebug(len(Map(1, 1)))
+    OutputDebug(len("1"))
+    OutputDebug(len({ a: 1 }))
+    OutputDebug(len(1))
+    OutputDebug(len(1.0))
 }
+;@Ahk2Exe-IgnoreEnd

@@ -122,22 +122,25 @@ class ArgsParse {
         }
     }
 }
-/*
-A_Args := [4, "--abc", "1", "-d=2", "--cos=3", 5]
-; A_Args := ["-v"]
-args := ArgsParse("A_Args 解析", "V0.1.0")
-args.AddArgument("--abc", "-a", "abc", "keyword argument ABC")
-args.AddArgument("--def", "-d", "def", "keyword argument DEF")
-args.AddArgument("--cos", "-c", "cos", "keyword argument COS")
-args.AddArgument("p1", , 0, "Position argument 1")
-args.AddArgument("p2", , 0, "Position argument 2")
-args.ParseArgs()
-OutputDebug args.abc
-OutputDebug args.a
-OutputDebug args.def
-OutputDebug args.d
-OutputDebug args.cos
-OutputDebug args.c
-OutputDebug args.p1
-OutputDebug args.p2
-; */
+
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    A_Args := [4, "--abc", "1", "-d=2", "--cos=3", 5]
+    ; A_Args := ["-v"]
+    args := ArgsParse("A_Args 解析", "V0.1.0")
+    args.AddArgument("--abc", "-a", "abc", "keyword argument ABC")
+    args.AddArgument("--def", "-d", "def", "keyword argument DEF")
+    args.AddArgument("--cos", "-c", "cos", "keyword argument COS")
+    args.AddArgument("p1", , 0, "Position argument 1")
+    args.AddArgument("p2", , 0, "Position argument 2")
+    args.ParseArgs()
+    OutputDebug args.abc
+    OutputDebug args.a
+    OutputDebug args.def
+    OutputDebug args.d
+    OutputDebug args.cos
+    OutputDebug args.c
+    OutputDebug args.p1
+    OutputDebug args.p2
+}
+;@Ahk2Exe-IgnoreEnd

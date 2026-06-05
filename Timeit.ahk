@@ -40,3 +40,8 @@ Timeit(fn, count := 1) {
     }
     OutputDebug(Format("{1}: {2} {3}`n", fn.Name ? fn.Name : "Fat arrow function", diff, units))
 }
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    Timeit((*) => (Sleep(1000)))
+}
+;@Ahk2Exe-IgnoreEnd

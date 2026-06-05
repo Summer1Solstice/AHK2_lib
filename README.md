@@ -1,6 +1,15 @@
 # AHK2_lib
-# 包含脚本
-### ArgsParse.ahk
+大部分脚本在单独运行时，会运行用于测试或演示的代码。
+其格式如下：
+```AutoHotkey
+;@Ahk2Exe-IgnoreBegin   ; 编译器指令，忽略以下代码
+;如果脚本是从外部文件加载的, 这等同于 A_ScriptFullPath, 除非该行属于脚本的 #Include 文件之一.
+if A_LineFile = A_ScriptFullPath {
+   ; 测试代码
+}
+;@Ahk2Exe-IgnoreEnd     ; 编译器指令，忽略代码结束
+```
+# 包含脚本`n### ArgsParse.ahk
 `A_Args` 命令行参数解析，如何使用？请看文件末尾的示例。
 
 ### (String|Array|Map)Plus.ahk
@@ -108,7 +117,7 @@ rangeA()，起始值从1开始，闭区间。
 
 ### TimedTask.ahk
 定时任务，通过派生类创建实例。
-TODO：重写，有gui，多任务，任务管理。
+简陋，无优化改进计划。
 
 ### Timeit.ahk
 高精度的计时模块，传入一个函数，输出单次运行的平均耗时。
