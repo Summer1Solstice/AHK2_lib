@@ -1,10 +1,11 @@
 /************************************************************************
- * @description 基于`OutputDebug`将变量字符串化输出到调试控制台。
- * 还包含一个`stringify`函数，用于字符串化变量，不遵守`JSON`规范，
+ * @description `Print`在标准输出或调试控制台输出，字符串化变量。
+ * `stringify`函数，用于字符串化变量，不遵守`JSON`规范，不包含格式美化。
  * 而是尽可能还原能在AHK中直接定义相同变量的文本。
+ * 字符串变量中的换行符、制表符、回车符会被替换为相应的AHK转义字符。
  * @author Summer1Solstice
- * @date 2026/05/03
- * @version 0.0.0
+ * @date 2026/06/06
+ * @version 0.1.0
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
@@ -22,7 +23,7 @@ stringify(val) {
             return val
         }
         if val is String {
-            return '"' val '"'
+            return '"' StrReplace(StrReplace(StrReplace(val, "`n", "``n"), "`r", "``r"), "`t", "``t") '"'
         }
         return val
     }
@@ -56,12 +57,6 @@ stringify(val) {
 }
 
 /**
- * 可视化\n \r \t
- * @param str 待处理的字符串
- * @returns {String} 处理后的字符串
- */
-VisibleCRLF(str) => StrReplace(StrReplace(StrReplace(str, "`n", "\n"), "`r", "\r"), "`t", "\t")
-/**
  * 将变量转换为字符串形式并输出到调试窗口
  * 该函数使用 stringify 函数将变量转换为字符串表示形式，然后输出到调试窗口
  * 对于不同类型的变量（基本类型、数组、映射、函数、对象等）会进行相应的格式化输出
@@ -77,3 +72,8 @@ Print(val) {
         OutputDebug(str)
     }
 }
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    Print([Map("1", { a: "b`nc" })])
+}
+;@Ahk2Exe-IgnoreEnd

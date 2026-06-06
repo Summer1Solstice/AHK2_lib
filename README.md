@@ -87,9 +87,10 @@ if A_LineFile = A_ScriptFullPath {
 `Prime.EulerSieve`求小于n的质数，`Prime.is`判断一个数是否为质数。
 
 ### Print.ahk
-基于`OutputDebug`将变量字符串化输出到调试控制台。
-还包含一个`stringify`函数，用于字符串化变量，不遵守`JSON`规范，
+`Print`在标准输出或调试控制台输出，字符串化变量。
+`stringify`函数，用于字符串化变量，不遵守`JSON`规范，不包含格式美化。
 而是尽可能还原能在AHK中直接定义相同变量的文本。
+字符串变量中的换行符、制表符、回车符会被替换为相应的AHK转义字符。
 
 ### Radians_Degrees.ahk
 角度转弧度、弧度转角度
