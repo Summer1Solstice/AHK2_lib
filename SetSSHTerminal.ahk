@@ -1,8 +1,8 @@
 /************************************************************************
  * @description 修改ssh终端为pwsh或bash
  * @author Summer1Solstice
- * @date 2026/04/13
- * @version 0.0.0
+ * @date 2026/06/08
+ * @version 0.0.1
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
@@ -25,6 +25,9 @@ SetSSHTerminal(Terminal) {
             break
         }
     }
-
 }
-; SetSSHTerminal(pwsh)
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    SetSSHTerminal(pwsh)    ; 修改为pwsh
+}
+;@Ahk2Exe-IgnoreEnd
