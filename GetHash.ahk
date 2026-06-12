@@ -26,20 +26,30 @@ GetHash(input, HashAlgorithm) {
     }
     HashAlgorithm := StrUpper(HashAlgorithm)
     switch HashAlgorithm {
-        case "MD2": size := 16
-        case "MD4": size := 16
-        case "MD5": size := 16
-        case "SHA1": size := 20
-        case "SHA256": size := 32
-        case "SHA384": size := 48
-        case "SHA512": size := 64
+        case "MD2": hashLength := 16
+        case "MD4": hashLength := 16
+        case "MD5": hashLength := 16
+        case "SHA1": hashLength := 20
+        case "SHA256": hashLength := 32
+        case "SHA384": hashLength := 48
+        case "SHA512": hashLength := 64
         default: throw "不支持的Hash算法"
     }
     phAlgorithm := { Ptr: 0, __delete: (this) => (DllCall("bcrypt\BCryptCloseAlgorithmProvider", "ptr", this, "int", 0)) }
     if code := DllCall("bcrypt\BCryptOpenAlgorithmProvider", "ptr*", phAlgorithm, "str", HashAlgorithm, "str", "", "int", 0) {
         throw "获取Hash算法句柄失败; " code
     }
-    ResultBuf := Buffer(size)
+    ; if code := DllCall("bcrypt\BCryptGetProperty",
+    ;     "ptr", phAlgorithm,
+    ;     "str", "HashDigestLength",
+    ;     "ptr*", &hashLength := 0,
+    ;     "int", 4,
+    ;     "ptr*", &resultSize := 0,
+    ;     "int", 0)
+    ; {
+    ;     throw "获取Hash值长度失败; " code
+    ; }
+    ResultBuf := Buffer(hashLength)
     if DllCall("bcrypt\BCryptHash",
         "ptr", phAlgorithm,
         "ptr", 0,
@@ -47,12 +57,12 @@ GetHash(input, HashAlgorithm) {
         "ptr", buf.Ptr,
         "int", buf.Size,
         "ptr", ResultBuf.Ptr,
-        "int", size)
+        "int", hashLength)
     {
         throw "计算Hash失败"
     }
     result := ""
-    loop size {
+    loop hashLength {
         result .= Format("{1:02x}", NumGet(ResultBuf, A_Index - 1, "Uchar"))
     }
     return result

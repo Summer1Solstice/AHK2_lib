@@ -49,13 +49,16 @@ if A_LineFile = A_ScriptFullPath {
 `FmtTUT`工具类，~~对内置函数`FormatTime`的包装~~。
 `Date`、`Time`、`DateTime`、`TimeStamp`，提供日期、时间、日期时间、时间戳相关的派生类。
 
+### DCErrCode.ahk
+DllCall错误代码查询
+
 ### FormatLog.ahk
 生成包含日期时间、日志等级、函数名和说明的格式化日志文本
 
 ### Full2Half.ahk
 全角字符、半角字符互转
 
-### GetFileHash.ahk
+### GetHash.ahk
 通过`BCrypt.dll`计算数据哈希值
 
 ### HowRun.ahk
