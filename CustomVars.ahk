@@ -1,8 +1,8 @@
 /************************************************************************
  * @description 自定义变量，命名格式仿照AHK内置变量，但是使用`C_`前缀。
  * @author Summer1Solstice
- * @date 2026/04/13
- * @version 0.0.0
+ * @date 2026/06/11
+ * @version 0.0.5
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
@@ -28,7 +28,13 @@ C_Minutes := 60 * C_Seconds
 C_Hours := 60 * C_Minutes
 ; 1d = 24h = 86400000ms
 C_Days := 24 * C_Hours
-
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    for i in [C_Seconds, C_Minutes, C_Hours, C_Days] {
+        OutputDebug i "`n"
+    }
+}
+;@Ahk2Exe-IgnoreEnd
 ; 数学常量
 ; 圆周率
 C_Pi := 3.1415926535897931
@@ -51,3 +57,17 @@ C_GB2312 := "CP936"
 C_GB18030 := "CP54936"
 C_UTF8 := "CP65001"
 C_ASCII := "CP1252"
+
+; 数据长度
+C_KByte := 1 << 10
+C_MByte := 1 << 20
+C_GByte := 1 << 30
+C_TByte := 1 << 40
+
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    for i in [C_KByte, C_MByte, C_GByte, C_TByte] {
+        OutputDebug i "`n"
+    }
+}
+;@Ahk2Exe-IgnoreEnd

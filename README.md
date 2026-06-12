@@ -56,7 +56,7 @@ if A_LineFile = A_ScriptFullPath {
 全角字符、半角字符互转
 
 ### GetFileHash.ahk
-获取文件hash值
+通过`BCrypt.dll`计算数据哈希值
 
 ### HowRun.ahk
 通过标准输出、`A_DebuggerName`、`A_Args`、控制台附加等方式判断脚本如何运行。
@@ -127,6 +127,9 @@ rangeA()，起始值从1开始，闭区间。
 fn := foo.Bind("args")  ; 函数
 fn1() => classobj.foo("arg")    ; 类实例方法
 ```
+
+### VisualizeCRLF.ahk
+可视化\n \r \t
 
 ### 数字转汉字.ahk
 阿拉伯数字转中文大/小写汉字。
