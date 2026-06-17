@@ -22,7 +22,8 @@ new_readme := "
     }
     ;@Ahk2Exe-IgnoreEnd     ; 编译器指令，忽略代码结束
     ```
-    # 包含脚本`n
+    # 包含脚本
+    
 )"
 Plus := false
 add(text) {
