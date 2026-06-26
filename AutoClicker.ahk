@@ -18,12 +18,18 @@ class AutoClicker {
         if not (key1 is Func) {
             throw "AutoClicker: 请传入动作函数"
         }
-        this.key1 := Key1
+        this.key1 := (*) => this.flag ? Key1() : ""
         if key2 ?? 0 {
             if not (key2 is Func) {
                 throw "AutoClicker: 请传入动作函数"
             }
             this.key2 := key2
+        }
+    }
+    __Delete() {
+        SetTimer(this.key1, 0)
+        if this.HasMethod("key2") {
+            this.key2.Call()
         }
     }
     flag := false
@@ -34,17 +40,18 @@ class AutoClicker {
             SetTimer(this.key1, 0)
             if this.HasMethod("key2") {
                 this.key2.Call()
+                ToolTip(, , , 20)
+            } else {
+                ToolTip(, , , 19)
             }
-            ToolTip()
         } else {
             this.flag := true
             SetTimer(this.key1, 100)
             if this.HasMethod("key2") {
-                ToolTip("自动按住工作中……", 0, 0)
+                ToolTip("自动按住工作中……", 0, 0, 20)
             } else {
-                ToolTip("自动连点工作中……", 0, 0)
+                ToolTip("自动连点工作中……", 0, 0, 19)
             }
-
         }
     }
 }

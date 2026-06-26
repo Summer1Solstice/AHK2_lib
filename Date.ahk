@@ -1,26 +1,50 @@
 /************************************************************************
- * @description `FmtTUT`工具类，~~对内置函数`FormatTime`的包装~~。
+ * @description `FmtTUT`工具类，对内置函数`FormatTime`的包装。
  * `Date`、`Time`、`DateTime`、`TimeStamp`，提供日期、时间、日期时间、时间戳相关的派生类。
  * @author Summer1Solstice
- * @date 2026/05/20
- * @version 0.1.0
+ * @date 2026/06/26
+ * @version 0.1.1
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
 
 ; FmtTUT，全称FormatTimeUtils
 class FmtTUT {
-    ; 转换为长日期格式
+    /**
+     * 转换为长日期格式
+     * 1970年1月1日
+     * @param Date 
+     * @returns {String} 
+     */
     static LongDate(Date) => FormatTime(Date, "LongDate")
-    ; 转为时间格式
+    /**
+     * 转换为时间格式
+     * 0:00:00
+     * @param Time 
+     * @returns {String} 
+     */
     static TimeT0(Time) => FormatTime(Time " T0", "Time")
-    ; 转为日期时间格式
+    /**
+     * 转换为日期时间格式
+     * 1970年1月1日 0:00:00
+     * @param DateTime 
+     * @returns {String} 
+     */
     static DateTimeT0R(DateTime) => FormatTime(DateTime " T0 R")
-    ; 转为RFC1123格式
+    /**
+     * 转换为RFC1123格式
+     * Thu, 1 Jan 1970 00:00:00 GMT
+     * @param DateTime 
+     * @returns {String} 
+     */
     static RFC1123(DateTime) => FormatTime(DateTime " L0x0409", "ddd, d MMM yyyy HH:mm:ss 'GMT'")
     ; UTC历元
     static Epoch := "19700101000000"
-    ; 时间戳
+    /**
+     * 转换为时间戳
+     * @param DateTime 
+     * @returns {Integer} 
+     */
     static TimeStamp(DateTime) => DateDiff(DateTime, this.Epoch, "Seconds")
     ; 时区偏移量(Seconds)
     static TimeZoneOffset := 28800
@@ -33,7 +57,11 @@ class FmtTUT {
 }
 ; 日期
 class Date {
-    ; 分解日期，当参数为A_Now时，返回等同于内置变量。
+    /**
+     * 分解日期，当参数为A_Now时，返回等同于内置变量。
+     * @param {String} Date 
+     * @returns {Object} Year: 年，Month: 月，Day: 日
+     */
     static Split(Date := A_Now) {
         return {
             Year: FormatTime(Date, "yyyy"),
@@ -48,7 +76,11 @@ class Date {
 }
 ; 时间
 class Time {
-    ; 分解时间，当参数为A_Now时，返回等同于内置变量。
+    /**
+     * 分解时间，当参数为A_Now时，返回等同于内置变量。
+     * @param {String} Date 
+     * @returns {Object} Hour: 小时，Min: 分钟，Sec: 秒
+     */
     static Split(Date := A_Now) {
         return {
             Hour: FormatTime(Date, "HH"),
@@ -81,7 +113,8 @@ class TimeStamp {
 
 ;@Ahk2Exe-IgnoreBegin
 if A_LineFile = A_ScriptFullPath {
-    for C in [FmtTUT, Date, Time, DateTime] {
+    for C in [FmtTUT, Date, Time, DateTime, TimeStamp] {
+        OutputDebug("=====" C.Prototype.__Class "=====`n")
         for P in C.OwnProps() {
             if P ~= "__|Prototype" {
                 continue
