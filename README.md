@@ -46,8 +46,11 @@ if A_LineFile = A_ScriptFullPath {
 ### CustomVars.ahk
 自定义变量，命名格式仿照AHK内置变量，但是使用`C_`前缀。
 
+### Custom_URI_Scheme.ahk
+注册自定义URI Scheme
+
 ### Date.ahk
-`FmtTUT`工具类，~~对内置函数`FormatTime`的包装~~。
+`FmtTUT`工具类，对内置函数`FormatTime`的包装。
 `Date`、`Time`、`DateTime`、`TimeStamp`，提供日期、时间、日期时间、时间戳相关的派生类。
 
 ### DCErrCode.ahk
