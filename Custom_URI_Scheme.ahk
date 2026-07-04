@@ -42,7 +42,7 @@ if A_LineFile = A_ScriptFullPath {
         OutputDebug("非管理员权限,无法注册自定义URI方案")
     }
     ahk_scheme := Custom_URI_Scheme()
-    ahk_scheme.Script := "echo.ahk"
+    ahk_scheme.Script := "E:\AutoHotkey\echo.ahk"
     ahk_scheme()
 }
 ;@Ahk2Exe-IgnoreEnd

@@ -2,8 +2,8 @@
  * @description 定时任务，通过派生类创建实例。
  * 简陋，无优化改进计划。
  * @author Summer1Solstice
- * @date 2026/04/13
- * @version 0.0.0
+ * @date 2026/07/04
+ * @version 0.0.1
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
@@ -34,6 +34,9 @@ class TimedTask {
             this.onTask()
             this.Close()
         }
+    }
+    __Delete() {
+        this.Close()
     }
     Close() => SetTimer(this.Timer, 0)
     ; 运行
