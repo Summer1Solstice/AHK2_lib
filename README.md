@@ -120,8 +120,14 @@ rangeA()，起始值从1开始，闭区间。
 ### SetSSHTerminal.ahk
 修改ssh终端为pwsh或bash
 
+### SplitPath2Object.ahk
+对内置函数`SplitPath`的封装，将路径字符串分解为对象
+
 ### TextReplaceUtils.ahk
 进行多次文本替换的包装函数
+
+### ThouSepToInt.ahk
+千分位数值转整数
 
 ### TimedTask.ahk
 定时任务，通过派生类创建实例。

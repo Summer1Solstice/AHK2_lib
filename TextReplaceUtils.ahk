@@ -23,6 +23,7 @@ __dependency(Fn, &str, list) {
     if Type(list) != "Array" {
         throw "需要传入数组，而不是 " Type(list)
     }
+
     for i in list {
         if Type(i) != "Array" {
             throw "数组元素不是数组"
