@@ -7,11 +7,17 @@
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
-
+; 获取当前控制台输入编码
+GetConsoleCP() => DllCall("GetConsoleCP")
+; 设置控制台输入编码。UTF-8：65001
+SetConsoleCP(Encoding) => (DllCall("AllocConsole"), DllCall("SetConsoleCP", "uint", Encoding))
+; 获取当前控制台输出编码
+GetConsoleOutputCP() => DllCall("GetConsoleOutputCP")
+; 设置控制台输出编码。UTF-8：65001
+SetConsoleOutputCP(Encoding) => (DllCall("AllocConsole"), DllCall("SetConsoleOutputCP", "uint", Encoding))
 ; 隐藏控制台窗口
 HideConsoleWindow() {
     DllCall("AllocConsole") ; 分配控制台窗口
-    ; DllCall("SetConsoleCP", "uint", DllCall("GetConsoleCP"))    ; 设置控制台编码为当前系统编码。UTF-8：65001
     ConsoleWindowHandle := DllCall("GetConsoleWindow", "ptr")   ; 获取控制台窗口句柄
     ; 隐藏控制台窗口后最小化窗口，避免窗口影响WinActive检查活动窗口
     WinHide(ConsoleWindowHandle)

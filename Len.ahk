@@ -1,5 +1,6 @@
 /************************************************************************
  * @description 返回变量的长度，支持 Object、Array、Map、RegExMatchInfo 和 Primitive 类型
+ * 存在缺陷，无法获取number的字节长度，只能获取数字字符串的字符长度。
  * @author Summer1Solstice
  * @date 2026/04/13
  * @version 0.0.0
@@ -22,7 +23,7 @@
  * @returns {Integer} 变量的长度或元素个数
  * @throws TypeError 当变量类型不被支持时抛出异常
  */
-len(var) {
+Len(var) {
     switch Type(var) {
         case "Array": return var.Length
         case "Map": return var.Count
@@ -34,13 +35,29 @@ len(var) {
     }
 }
 
+/**
+ * 返回字符串的字节长度
+ * @param var 字符串变量（Primitive 类型）
+ * @param {String} encoding 编码类型，默认 "utf-8"。
+ * @returns {Integer} string 编码后的字节数。
+ */
+StrLenByte(var, encoding := "utf-8") {
+    if var is Primitive {
+        return StrPut(var, encoding) - 1
+    } else {
+        throw TypeError(Type(var))
+    }
+}
+
 ;@Ahk2Exe-IgnoreBegin
 if A_LineFile = A_ScriptFullPath {
-    OutputDebug(len([1]))
-    OutputDebug(len(Map(1, 1)))
-    OutputDebug(len("1"))
-    OutputDebug(len({ a: 1 }))
-    OutputDebug(len(1))
-    OutputDebug(len(1.0))
+    OutputDebug(len({ a: 1 }) "`n")
+    OutputDebug(len(Map(1, 1, 2, 2)) "`n")
+    OutputDebug(len([1, 2, 3]) "`n")
+    OutputDebug(len("4444") "`n")
+    OutputDebug(len(1) "`n")
+    OutputDebug(len(1.0) "`n")
+    OutputDebug(StrLenByte("你好", "utf-8") "`n")
+    OutputDebug(StrLenByte(1234) "`n")
 }
 ;@Ahk2Exe-IgnoreEnd

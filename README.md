@@ -10,6 +10,9 @@ if A_LineFile = A_ScriptFullPath {
 ;@Ahk2Exe-IgnoreEnd     ; 编译器指令，忽略代码结束
 ```
 # 包含脚本
+### 0rganize.ahk
+脚本概述自动生成脚本
+
 ### ArgsParse.ahk
 `A_Args` 命令行参数解析，如何使用？请看文件末尾的示例。
 
@@ -76,6 +79,7 @@ DllCall错误代码查询
 
 ### Len.ahk
 返回变量的长度，支持 Object、Array、Map、RegExMatchInfo 和 Primitive 类型
+存在缺陷，无法获取number的字节长度，只能获取数字字符串的字符长度。
 
 ### MergeBuffer.ahk
 合并两个缓冲对象为一个新缓冲对象
@@ -83,8 +87,8 @@ DllCall错误代码查询
 ### NormalizePath.ahk
 标准化文件路径
 
-### organize.ahk
-脚本概述自动生成脚本
+### PercentPixel.ahk
+根据输入的百分比浮点数返回屏幕像素
 
 ### Predefined.ahk
 弃用！

@@ -97,3 +97,16 @@ if A_LineFile = A_ScriptFullPath {
     }
 }
 ;@Ahk2Exe-IgnoreEnd
+
+/*哈希算法: MD2 MD4 MD5 SHA1 SHA256 SHA384 SHA512*/
+/*
+CertUtil(file, HashAlgorithm) {
+    command := Format('CertUtil -hashfile "{1}" {2}', file, HashAlgorithm)
+    list := StrSplit(RunWaitOne(command), "`r`n")
+    return list[2]
+}
+GetFileHash(file, HashAlgorithm) {
+    command := Format('powershell -NoProfile -NonInteractive -NoLogo -WindowStyle Hidden -Command "(Get-FileHash "{1}" -Algorithm {2}).Hash"', file, HashAlgorithm)
+    return StdoutToVar(command).Output
+}
+*/
