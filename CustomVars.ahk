@@ -71,3 +71,6 @@ if A_LineFile = A_ScriptFullPath {
     }
 }
 ;@Ahk2Exe-IgnoreEnd
+
+; 路径
+DownloadDir := EnvGet("USERPROFILE") . "\Downloads"

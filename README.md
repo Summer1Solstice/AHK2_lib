@@ -68,6 +68,9 @@ DllCall错误代码查询
 ### GetHash.ahk
 通过`BCrypt.dll`计算数据哈希值
 
+### GetPathFromReg.ahk
+从注册表路径中获取文件路径
+
 ### HowRun.ahk
 通过标准输出、`A_DebuggerName`、`A_Args`、控制台附加等方式判断脚本如何运行。
 
