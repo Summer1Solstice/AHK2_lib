@@ -33,9 +33,6 @@ if A_LineFile = A_ScriptFullPath {
 ### CommandLineToArgvW.ahk
 命令行参数文本转数组，基于`Shell32\CommandLineToArgvW`。
 
-### ConnectWifi.ahk
-连接指定名称的 Wi-Fi 网络。
-
 ### ConvertBase.ahk
 基于`msvcrt.dll`的进制转换，包含一个`ConvertBase`函数，可进行 2-32 进制转换，
 以及`hex`、`bin`、`oct`、`int`四个包装函数。
@@ -150,6 +147,9 @@ fn1() => classobj.foo("arg")    ; 类实例方法
 
 ### VisualizeCRLF.ahk
 可视化\n \r \t
+
+### WiFiUtils.ahk
+Wi-Fi工具函数
 
 ### 数字转汉字.ahk
 阿拉伯数字转中文大/小写汉字。
