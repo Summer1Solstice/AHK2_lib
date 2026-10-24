@@ -1,8 +1,8 @@
 /************************************************************************
  * @description 自定义变量，命名格式仿照AHK内置变量，但是使用`C_`前缀。
  * @author Summer1Solstice
- * @date 2026/06/11
- * @version 0.0.5
+ * @date 2026/10/25
+ * @version 0.0.7
  ***********************************************************************/
 
 #Requires AutoHotkey v2.0
@@ -73,4 +73,9 @@ if A_LineFile = A_ScriptFullPath {
 ;@Ahk2Exe-IgnoreEnd
 
 ; 路径
+; 下载目录
 DownloadDir := EnvGet("USERPROFILE") . "\Downloads"
+
+; 屏幕坐标点
+; 屏幕中心坐标  [A_ScreenWidth // 2, A_ScreenHeight // 2]
+C_ScreenCenter := [A_ScreenWidth // 2, A_ScreenHeight // 2]
