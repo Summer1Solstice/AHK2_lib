@@ -46,10 +46,9 @@ loop files "*.ahk" {
         continue
     }
 
-    new_readme .= "### " ScripFileName "`n"
+    new_readme .= Format("### [{1}](./{1})`n", ScripFileName)
     flag := false
     desc := false
-
     loop read ScripFileName {
         if A_LoopReadLine ~= "/\*+" {
             flag := true
@@ -74,7 +73,6 @@ loop files "*.ahk" {
     }
     new_readme .= "`n"
 }
-
 fileobj := FileOpen("README.md", "w")
 fileobj.Write(new_readme)
 fileobj.Close()
