@@ -35,6 +35,7 @@ if A_LineFile = A_ScriptFullPath {
     }
 }
 ;@Ahk2Exe-IgnoreEnd
+
 ; 数学常量
 ; 圆周率
 C_Pi := 3.1415926535897931
@@ -74,8 +75,12 @@ if A_LineFile = A_ScriptFullPath {
 
 ; 路径
 ; 下载目录
-DownloadDir := EnvGet("USERPROFILE") . "\Downloads"
+C_DownloadDir := EnvGet("USERPROFILE") . "\Downloads"
 
 ; 屏幕坐标点
 ; 屏幕中心坐标  [A_ScreenWidth // 2, A_ScreenHeight // 2]
 C_ScreenCenter := [A_ScreenWidth // 2, A_ScreenHeight // 2]
+
+; 正则表达式
+; 视频文件扩展名匹配
+C_VideoFileExt := "(?:mp4|mkv)$"
