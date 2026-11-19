@@ -24,7 +24,7 @@ rangeA(start, stop?, step := 1) {
     if step = 0
         throw ValueError("步长不能为 0 ")
     if (start > stop and step > 0) or (start < stop and step < 0)
-        throw ValueError("起始值和停止值与步长方向不一致")
+        throw ValueError(Format("起始值:{1}和停止值:{2}与步长方向:{3}不一致", start, stop, step))
 
     range_add(&i) {
         i := start

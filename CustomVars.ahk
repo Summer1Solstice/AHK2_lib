@@ -82,5 +82,29 @@ C_DownloadDir := EnvGet("USERPROFILE") . "\Downloads"
 C_ScreenCenter := [A_ScreenWidth // 2, A_ScreenHeight // 2]
 
 ; 正则表达式
+/**
+ * @description 文件扩展名正则表达式包装器
+ * @type object
+ * @property full: 完整匹配
+ * @property i: 不区分大小写匹配
+ */
+C_ExtReWrap := {
+    full: (this, args*) => (Format("^(?:{1})$", args*)),
+    i: (this, args*) => (Format("i){1}", args*)),
+}
 ; 视频文件扩展名匹配
-C_VideoFileExt := "(?:mp4|mkv)$"
+C_VideoFileExt := "mp4|mkv"
+; 源代码文件扩展名匹配
+C_SourceCodeFileExt := "ahk2|py|js"
+; 文本文件扩展名匹配
+C_TextFileExt := Format("txt|log|md|{1}", C_SourceCodeFileExt)
+;@Ahk2Exe-IgnoreBegin
+if A_LineFile = A_ScriptFullPath {
+    for i in [C_VideoFileExt, C_SourceCodeFileExt, C_TextFileExt] {
+        OutputDebug i "`n"
+        OutputDebug C_ExtReWrap.full(i) "`n"
+        OutputDebug C_ExtReWrap.i(i) "`n"
+        OutputDebug C_ExtReWrap.i(C_ExtReWrap.full(i)) "`n"
+    }
+}
+;@Ahk2Exe-IgnoreEnd
