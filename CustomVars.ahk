@@ -92,14 +92,29 @@ C_ExtReWrap := {
     full: (this, args*) => (Format("^(?:{1})$", args*)),
     i: (this, args*) => (Format("i){1}", args*)),
 }
+/**
+ * @description 文件扩展名正则表达式 拼接；
+ * 不做输入验证，使用`|` 分隔。
+ * @param args 多个文件扩展名C_变量 
+ * @returns {String} 拼接后的文件扩展名正则表达式
+ */
+C_ExtReJoin(args*) {
+    result := ""
+    for i in args {
+        result .= i . "|"
+    }
+    return RTrim(result, "|")
+
+}
 ; 视频文件扩展名匹配
 C_VideoFileExt := "mp4|mkv"
 ; 源代码文件扩展名匹配
 C_SourceCodeFileExt := "ahk2|py|js"
 ; 文本文件扩展名匹配
-C_TextFileExt := Format("txt|log|md|{1}", C_SourceCodeFileExt)
+C_TextFileExt := Format("txt|log|md|ass|{1}", C_SourceCodeFileExt)
 ;@Ahk2Exe-IgnoreBegin
 if A_LineFile = A_ScriptFullPath {
+    OutputDebug C_ExtReJoin(C_VideoFileExt, C_SourceCodeFileExt, C_TextFileExt) "`n"
     for i in [C_VideoFileExt, C_SourceCodeFileExt, C_TextFileExt] {
         OutputDebug i "`n"
         OutputDebug C_ExtReWrap.full(i) "`n"
